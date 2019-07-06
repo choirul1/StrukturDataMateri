@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Choirul Umam 160411100075">
+        <link rel="canonical" href="https://squidfunk.github.io/mkdocs-material/materi6/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Materi 6 Searching - Materi Struktur Data</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">Materi Struktur Data</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Pendahuluan</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Materi <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../materi1/">Materi 1 Stack</a>
+</li>
+                                    
+<li >
+    <a href="../materi2/">Materi 2 infix, prefix, postfix</a>
+</li>
+                                    
+<li >
+    <a href="../materi3/">Materi 3 Classes</a>
+</li>
+                                    
+<li >
+    <a href="../materi4/">Materi 4 Linked List</a>
+</li>
+                                    
+<li >
+    <a href="../materi5/">Materi 5 Rekursif</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Materi 6 Searching</a>
+</li>
+                                    
+<li >
+    <a href="../materi7/">Materi 7 Hashing</a>
+</li>
+                                    
+<li >
+    <a href="../materi8/">Materi 8 Tree</a>
+</li>
+                                    
+<li >
+    <a href="../materi9/">Materi 9 Graph</a>
+</li>
+                                </ul>
+                            </li>
+                            <li >
+                                <a href="../Profil/">Profil</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../materi5/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../materi7/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#searching">Searching</a></li>
+            <li><a href="#1-sequential-searching">1. Sequential Searching</a></li>
+            <li><a href="#a-definisi">A. Definisi</a></li>
+            <li><a href="#unordered-sequential-search">Unordered Sequential Search</a></li>
+            <li><a href="#2-binary-seraching">2. Binary Seraching</a></li>
+            <li><a href="#latihan-praktikum">Latihan Praktikum</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="searching">Searching</h1>
+<p><img alt="" src="C:\Users\Choirul\AppData\Local\Programs\Python\Python37-32\Scripts\struktur_data\docs\assets\images\binary-and-linear-search-animations.gif" /></p>
+<h3 id="1-sequential-searching">1. Sequential Searching</h3>
+<h3 id="a-definisi">A. Definisi</h3>
+<p>Linear Searching atau sequential search adalah sebuah metode pencaran data dengan cara membandingkan nilai yang dicari dengan nilai dari setiap elemen list , mulai dari elemen pertama (indeks = 0) sampai nilai yang dicari ditemukan atau sampai elemen terakhir (indeks - n). Untuk lebih jelasnya perhatikan gambar animasi di bawah ini.</p>
+<p><img alt="" src="C:\Users\Choirul\AppData\Local\Programs\Python\Python37-32\Scripts\struktur_data\docs\assets\images\linear_search.gif" /></p>
+<p>​    Misalnya kita memiliki sebuah list, anggap saja list a. Di dalam list itu terdapat beberapa elemen yang terdiri dari beberapa angka acak. Katakanlah 8,5,7,9,2. Kita ingin mencari sebuah angka dari dalam list tersebut, misalnya angka 7. Dan juga kita bisa juga sekaligus mendapatkan informasi pada indeks ke-berapa letak angka tersebut berada, berapa kali iterasinya (proses perulangan saat mencari data tersebut). </p>
+<h3 id="unordered-sequential-search">Unordered Sequential Search</h3>
+<p>Pada <em>unordered list sequential search</em>, data berada pada keadaan acak, tidak terurut, sehingga pencarian harus dilakukan mulai dari indeks awal sampai indeks terakhir dari data, atau pencarian berhenti ketika data sudah ditemukan.</p>
+<p>Contoh :</p>
+<p>implementasi algoritma <em>unordered list sequential search</em>.</p>
+<pre><code class="python">def seqSearch(listData, data):
+    ind = 0
+    found = False
+    while ind &lt; len(listData) and not found:
+        if listData[ind] == data:
+            found = True
+        else:
+            ind = ind+1
+    return found
+a=[12,5,9,8,1,10,26]
+seqSearch(a,1)
+</code></pre>
+
+<p>Ordered equential List</p>
+<p>Pada ordered list sequential search, data sudah dalam keadaan terurut, hal ini tentunya dapat mengurangi waktu komputasi pencarian. </p>
+<p>Contoh :</p>
+<pre><code class="python">def orderedSeqSearch(listData, data):
+    ind = 0
+    found = False
+    stop = False
+    position=[]
+    while ind &lt; len(listData) and not found and not stop:
+        if listData[ind] == data:
+            found = True
+            position.append(ind)
+        else:
+            if listData[ind] &gt; data:
+                stop = True
+            else:
+                ind = ind+1
+
+    if found:
+        return ind
+    else:
+        return ('Data tidak ada')
+ a=[1,1,5,5,5,8,9,10,12,26]
+ind=orderedSeqSearch(a,5)
+print(ind)
+</code></pre>
+
+<h3 id="2-binary-seraching">2. Binary Seraching</h3>
+<p>Binary Search merupakan metode pencarian data dengan membagi 2 atau pencarian dimulai dari indeks list bagian tengah, lalu membandingkannya. Jika bertemu dengan angka yang lebih kecil dari pada yang dicari, maka langsung dibuangnya, begitu seterusnya hingga nilai yang dicari (==)  cocok.</p>
+<p><img alt="" src="C:\Users\Choirul\AppData\Local\Programs\Python\Python37-32\Scripts\struktur_data\docs\assets\images\binary.gif" /></p>
+<p>Cara kerja algoritma pencarian bagi-dua adalah dengan membagi elemen-elemen list menjadi dua bagian secara berulang. Jika nlai yang dicari (value) lebih kecil dari elemen tengah (alist[middle]), maka proses pencarian dilakukan pada bagian list sebelah kiri. Jika lebih besar, maka pencarian dilakukan pada bagian list sebelah kanan; dengan asumsi bahwa elemen-elemen list terurut secara menaik (ascending).</p>
+<p>Contoh :</p>
+<p>Berikut code untuk binary search dengan metode iteratif</p>
+<pre><code class="python">def binarySearch(listData, data):
+    first = 0
+    last = len(listData) - 1
+    found = False
+
+    while first &lt;= last and not found:
+        midpoint = (first + last) // 2
+        if listData[midpoint] == data:
+            found = True
+
+        else:
+            if data &lt; listData[midpoint]:
+                last = midpoint - 1
+            else:
+                first = midpoint + 1
+
+    return found
+a=[4,6,10,34,56,78,99]
+print(binarySearch(a,34))
+</code></pre>
+
+<h3 id="latihan-praktikum">Latihan Praktikum</h3>
+<ol>
+<li></li>
+</ol>
+<pre><code class="python"># nomer 1
+
+def seqSearch(listData, data):
+    iterasi = 0
+    hasil = []
+    found = 'Data tidak ada'
+    for i in range(len(listData)):
+        if listData[i] == data:
+            hasil.append(i)
+            found = hasil
+            iterasi = iterasi+1
+    return found,iterasi
+
+a = [1,5,9,8,1,5,10,26,5,12]
+[hasil,jumlahIterasi] = seqSearch(a,5)
+print(&quot;===========SequentialSearch=====================&quot;)
+print(&quot;data&quot;,a)
+print('Posisi Data =',hasil)
+print('Jumlah Iterasi =',jumlahIterasi)
+
+# nomer 2
+
+def orderedSeqSearch(listData, data):
+    ind = 0
+    iterasi = 0
+    found = False
+    stop = False
+    position=[]
+    while ind &lt; len(listData) and not found and not stop:
+        if listData[ind] == data and listData[ind+1] == data:
+            position.append(ind)
+            found = False
+            iterasi += 1
+            ind = ind+1
+        elif listData[ind] == data and listData[ind+1] != data:
+            position.append(ind)
+            iterasi += 2
+            found = True
+        else:
+            if listData[ind] &gt; data:
+                iterasi += 1
+                stop = True
+            else:
+                iterasi += 1
+                ind = ind+1
+
+    if found:
+        return position,iterasi 
+    else:
+        return ('Data tidak ada',iterasi)
+
+a = [1,1,5,5,5,8,9,10,12,26]
+[hasil,iterasi] = orderedSeqSearch(a,5)
+print(&quot;==================orderedSeqSearch================&quot;)
+print(&quot;data&quot;,a)
+print('Posisi Data =',hasil)
+print('Jumlah Iterasi =',iterasi)
+
+# nomer 3
+
+def binarySearch(listData, data):
+    first = 0
+    iterasi = 0
+    last = len(listData) - 1
+    found = False
+    hasil = []
+    while first &lt;= last and not found:
+        midpoint = (first + last) // 2
+        if listData[midpoint] == data and listData[midpoint-1] == data and listData[midpoint-2] != data:
+            found = True
+            hasil.append(midpoint)
+            hasil.append(midpoint-1)
+            iterasi += 2
+        elif listData[midpoint]==data and listData[midpoint-1] == data and listData[midpoint-2] ==data:
+            found = True
+            hasil.append(midpoint)
+            hasil.append(midpoint-2)
+            hasil.append(midpoint-1)
+            iterasi += 4
+        elif listData[midpoint]==data and listData[midpoint-1] != data:
+            found = True
+            hasil.append(midpoint)
+            iterasi += 1
+        else:
+            if data &lt; listData[midpoint]:
+                last = midpoint - 1
+                iterasi += 1
+            else:
+                first = midpoint + 1
+                iterasi += 1
+    if found :
+        return hasil,iterasi
+    else:
+        return &quot;data tidak ada&quot;,iterasi
+a = [1,1,5,5,5,8,9,10,12,26,30]
+[hasil,iterasi] = binarySearch(a,26)
+print(&quot;===========Binary Search=====================&quot;)
+print(&quot;data&quot;,a)
+print('Posisi Data =',hasil)
+print('Jumlah Iterasi =',iterasi)
+
+</code></pre>
+
+<pre><code class="python">Output :
+===========SequentialSearch=====================
+data [1, 5, 9, 8, 1, 5, 10, 26, 5, 12]
+Posisi Data = [1, 5, 8]
+Jumlah Iterasi = 3
+==================orderedSeqSearch================
+data [1, 1, 5, 5, 5, 8, 9, 10, 12, 26]
+Posisi Data = [2, 3, 4]
+Jumlah Iterasi = 6
+===========Binary Search=====================
+data [1, 1, 5, 5, 5, 8, 9, 10, 12, 26, 30]
+Posisi Data = [9]
+Jumlah Iterasi = 3
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2019 Ach Choirul Umam, 160411100075</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

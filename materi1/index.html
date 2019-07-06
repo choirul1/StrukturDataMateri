@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Choirul Umam 160411100075">
+        <link rel="canonical" href="https://squidfunk.github.io/mkdocs-material/materi1/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Materi 1 Stack - Materi Struktur Data</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">Materi Struktur Data</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Pendahuluan</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Materi <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li class="active">
+    <a href="./">Materi 1 Stack</a>
+</li>
+                                    
+<li >
+    <a href="../materi2/">Materi 2 infix, prefix, postfix</a>
+</li>
+                                    
+<li >
+    <a href="../materi3/">Materi 3 Classes</a>
+</li>
+                                    
+<li >
+    <a href="../materi4/">Materi 4 Linked List</a>
+</li>
+                                    
+<li >
+    <a href="../materi5/">Materi 5 Rekursif</a>
+</li>
+                                    
+<li >
+    <a href="../materi6/">Materi 6 Searching</a>
+</li>
+                                    
+<li >
+    <a href="../materi7/">Materi 7 Hashing</a>
+</li>
+                                    
+<li >
+    <a href="../materi8/">Materi 8 Tree</a>
+</li>
+                                    
+<li >
+    <a href="../materi9/">Materi 9 Graph</a>
+</li>
+                                </ul>
+                            </li>
+                            <li >
+                                <a href="../Profil/">Profil</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="..">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../materi2/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#stack">Stack</a></li>
+            <li><a href="#a-definisi">A. Definisi</a></li>
+            <li><a href="#b-ilustrasi">B. Ilustrasi</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="stack">Stack</h1>
+<h2 id="a-definisi">A. Definisi</h2>
+<p><strong>Stacks</strong> adalah satu struktur data dimana penambahan dan penghapusan data, hanya dapat dilakukan pada satu ujung yang <strong>sama</strong>, atau yang biasa dikenal dengan istilah <strong>top</strong>.</p>
+<p>Semakin data jauh berada dari posisi top, maka data tersebut diindikasikan berada di stack lebih lama dibandingkan dengan data yang berada dekat pada data di posisi top.</p>
+<p>Jika terdapat data baru yang ditambahkan di stack, maka data ini pulalah yang akan dihapus ketika terdapat proses penghapusan data. Konsep ini dikenal dengan nama <strong>LIFO-Last In First Out</strong>.</p>
+<h2 id="b-ilustrasi">B. Ilustrasi</h2>
+<p><img alt="" src="C:\Users\Choirul\AppData\Local\Programs\Python\Python37-32\Scripts\struktur_data\docs\assets\images\stackketutrare.JPG" /></p>
+<p>Jika Ingin Melakukan Perubahan Susunan Balok Diatas, Maka Yang Dapat Diambil Adalah Balok paling atas, sama halnya ketika ingin mengambil balok paling bawah, maka harus mengambil balok-balok yang berada diatasnya terlebih dahulu.</p>
+<p><strong>C. Operasi Stack</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>stack()</strong></th>
+<th>membuat suatu stack baru yang kosong. Tidak memerlukan parameter dan mengembalikan suatu stack kosong.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>push(item)</strong></td>
+<td>menambahkan suatu item baru ke atas (top) dari stack. Perlu item dan tidak mengembalikan apapun.</td>
+</tr>
+<tr>
+<td><strong>pop()</strong></td>
+<td>menghapus item teratas dari stack. Tidak perlu parameter dan mengembalikan item. Stack berubah.</td>
+</tr>
+<tr>
+<td><strong>peek()</strong></td>
+<td>mengembalikan top item dari stack tetapi tidak menghapusnya. Tidak memerlukan parameter dan stack tidak berubah.</td>
+</tr>
+<tr>
+<td><strong>isEmpty()</strong></td>
+<td>memeriksa apakah stack dalam keadaan kosong. Tidak memerlukan parameter dan mengembalikan nilai boolean.</td>
+</tr>
+<tr>
+<td><strong>size()</strong></td>
+<td>mengembalikan jumlah item di dalam stack. Tidak memerlukan parameter dan mengembalikan suatu integer.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>D. Code</strong></p>
+<p>Dibawah ini merupakan fungsi-fungsi untuk implementasi stack</p>
+<pre><code class="python">def stack():
+    s=[]
+    return (s)
+def push(s,data):
+    s.append(data)
+def pop(s):
+    data=s.pop()
+    return(data)
+def peek(s):
+    return(s[len(s)-1])
+def isEmpty(s):
+    return (s==[])
+def size(s):
+    return(len(s))
+</code></pre>
+
+<p>Berikut Contoh Implementasi Sederhana :</p>
+<pre><code class="python">st=stack()
+isEmpty(st)
+</code></pre>
+
+<p>Output : True</p>
+<pre><code class="python">push(st,5)
+push(st,4)
+push(st,3)
+pop(st)
+push(st,10)
+pop(st)
+print(st)
+</code></pre>
+
+<p>Output : [5, 4]</p>
+<p><strong>E. Latihan</strong></p>
+<p><strong>Program Balik Kata</strong></p>
+<pre><code class="python">def stack():
+    s=[]
+    return(s)
+
+def push(s,data):
+    s.append(data)
+
+def pop(s):
+    data=s.pop()
+    return(data)
+
+def peek(s):
+    return(s[len(s)-1])
+
+def isEmpty(s):
+    return (s==[])
+
+def size(s):
+    return (len(s))
+
+def balik(teks):
+    a=stack()
+    hasil =''
+    for i in range(len(teks)):
+        push(a, teks[i])
+    for i in range (len(teks)):
+        hasil=hasil+pop(a)
+    return hasil
+print(balik('arek'))
+</code></pre>
+
+<pre><code class="python">Output:
+kera
+</code></pre>
+
+<p><strong>Program Konversi bilangan desimal ke bilangan biner</strong></p>
+<p>Konversi Bilangan Sangat Diperlukan Dalam dunia komputer, bahkan sangat di butuhkan ketika akan mengkonversi bilangan untuk satu alamat IP Jaringan.</p>
+<p><img alt="" src="C:\Users\Choirul\AppData\Local\Programs\Python\Python37-32\Scripts\struktur_data\docs\assets\images\desToBin2.png" /></p>
+<pre><code class="python">def stack():
+    s=[]
+    return(s)
+
+def push(s,data):
+    s.append(data)
+
+def pop(s):
+    data=s.pop()
+    return(data)
+
+def peek(s):
+    return(s[len(s)-1])
+
+def isEmpty(s):
+    return (s==[])
+
+def size(s):
+    return (len(s))
+
+def biner(desi):
+    st=stack()
+    des=desi
+    while des&gt;0:
+        push(st,str(des%2))
+        des=des//2
+    hasil=''
+    while not isEmpty(st):
+        if len(st)==1:
+            hasil=hasil+st.pop()
+        else:
+            hasil=hasil+st.pop()+&quot;.&quot;
+    return(hasil)
+
+s=int(input(&quot;masukkan nilai desimal:&quot;))
+print(&quot;biner:&quot;+biner(s))
+
+masukkan nilai desimal:234
+              biner:1.1.1.0.1.0.1.0
+</code></pre>
+
+<pre><code class="python">Output
+masukkan nilai desimal: 234 
+biner: 1.1.1.0.1.0.1.0
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2019 Ach Choirul Umam, 160411100075</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

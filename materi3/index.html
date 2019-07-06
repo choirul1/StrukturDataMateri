@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Choirul Umam 160411100075">
+        <link rel="canonical" href="https://squidfunk.github.io/mkdocs-material/materi3/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Materi 3 Classes - Materi Struktur Data</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">Materi Struktur Data</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Pendahuluan</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Materi <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../materi1/">Materi 1 Stack</a>
+</li>
+                                    
+<li >
+    <a href="../materi2/">Materi 2 infix, prefix, postfix</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Materi 3 Classes</a>
+</li>
+                                    
+<li >
+    <a href="../materi4/">Materi 4 Linked List</a>
+</li>
+                                    
+<li >
+    <a href="../materi5/">Materi 5 Rekursif</a>
+</li>
+                                    
+<li >
+    <a href="../materi6/">Materi 6 Searching</a>
+</li>
+                                    
+<li >
+    <a href="../materi7/">Materi 7 Hashing</a>
+</li>
+                                    
+<li >
+    <a href="../materi8/">Materi 8 Tree</a>
+</li>
+                                    
+<li >
+    <a href="../materi9/">Materi 9 Graph</a>
+</li>
+                                </ul>
+                            </li>
+                            <li >
+                                <a href="../Profil/">Profil</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../materi2/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../materi4/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#classes">Classes</a></li>
+            <li><a href="#a-definisi">A. Definisi</a></li>
+            <li><a href="#string-dan-list">String dan List</a></li>
+            <li><a href="#istilah-dalam-pbo">Istilah Dalam PBO</a></li>
+            <li><a href="#constructor">Constructor</a></li>
+            <li><a href="#method">Method</a></li>
+            <li><a href="#5-override-method">5. Override Method</a></li>
+            <li><a href="#b-code">B. Code</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="classes">Classes</h1>
+<h3 id="a-definisi">A. Definisi</h3>
+<p>class merupakan sebuah objek yang di dalam nya biasanya terdapat beberapa metode yang memang merupakan isi dari sebuah class ini. Class dan metode ini biasa di sebut sebagai (PBO) atau Pemrograman Berorientasi Obyek. Dan (PBO) ini memang fungsinya untuk memudahkan proses atau kegiatan programing. </p>
+<p>Berikut beberapa hal yang harus diketahui untuk pengenalan Pemrograman Berorientasi Obyek (PBO).</p>
+<pre><code class="php+HTML">1. String dan List
+2. Istilah dalam PBO
+3. Constructur
+4. Method
+5. Overide Method
+</code></pre>
+
+<ol>
+<li>
+<h3 id="string-dan-list">String dan List</h3>
+</li>
+</ol>
+<p>Merupakan tipe data class yang sudah diketahui dan diginakan sebelumnya, adalah tipe data lists ataupun string. Suatu variabel yang berbentuk <em>lists</em> ataupun <em>string</em>, memiliki dua buah elemen yang terkandung di dalam variabel tersebut, yaitu nilai atau yang disebut dengan <em>state</em>/<em>property</em>, serta <em>method</em> atau fungsi, yang dapat digunakan untuk mengolah nilai pada variabel tersebut. 
+Method atau fungsi yang melekat pada suatu variabel dapat diakses dengan menggunakan syntax.</p>
+<pre><code class="python">namaObyek.NamaMethod()
+</code></pre>
+
+<p>Contoh :</p>
+<p>Berikut adalah contoh tipe data string dan lists, yang memiliki nilai sekaligus method.</p>
+<pre><code class="python"># String
+dataStr='Choirul' 
+print(dataStr)
+dataStr=dataStr.upper()
+print(dataStr)
+</code></pre>
+
+<p>Pada Contoh diatas terdapat variabel dataStr, berbentuk string. dimana property dari dataStr adalah 'Choirul', Contoh method yang digunakan adalah method upper()<em>u<strong>p</strong>p<strong>e</strong>r</em>(), yang berfungsi untuk merubah semua karakter pada dataStr<em>d<strong>a</strong>t<strong>a</strong>S<strong>t</strong>r</em> menjadi huruf kapital. Beberapa contoh method lain yang dapat digunakan adalah capitalize()<em>c<strong>a</strong>p<strong>i</strong>t<strong>a</strong>l<strong>i</strong>z<strong>e<em>(), lower()</em>l</strong>o<strong>w</strong>e<strong>r<em>(), find()</em>f</strong>i<strong>n</strong>d</em>(), dll</p>
+<pre><code class="python"># Lists
+dataLs=[12, 13, 14]
+print(dataLs)
+data.append(45)
+print(dataLs)
+</code></pre>
+
+<p>Pada contoh code diatas, terdapat variabel dataLs<em>d<strong>a</strong>t<strong>a</strong>L<strong>s<em> yang berbentuk </em>lists<em>. Variabel ini memiliki tiga buah nilai, yaitu 12, 113, dan 14. Contoh method yang digunakan adalah append()</em>a</strong>p<strong>p</strong>e<strong>n</strong>d</em>(), yaitu menambah data pada variabel berbentuk <em>lists</em>. Contoh method method lain yang dimiliki tipe data lists yang bisa dimanfaatkan, misalkan pop()<em>p<strong>o</strong>p</em>(), insert()<em>i<strong>n</strong>s<strong>e</strong>r<strong>t<em>(), clear()</em>c</strong>l<strong>e</strong>a<strong>r<em>(), reverse()</em>r</strong>e<strong>v</strong>e<strong>r</strong>s</em><em>e</em>(), dsb.</p>
+<ol>
+<li>
+<h3 id="istilah-dalam-pbo">Istilah Dalam PBO</h3>
+</li>
+</ol>
+<p>Kelebihan dari bahasa pemrogaraman berbasis object, adalah bahasa tersebut menyediakan beberapa fitur agar <em>programmer</em> dapat membuat <em>class</em> sendiri yang sesuai dengan kebutuhan. Beberapa istilah dasar yang terdapat pada pemrograman berbasis object ini antara lain :</p>
+<ul>
+<li><em>class</em>, tipe data yang tidak hanya berisi data tetapi juga method</li>
+<li><em>object</em>, suatu variabel dengan tipe data <em>class</em></li>
+<li><em>state, property</em>, bagian data dari suatu class yang berisi nilai, dapat berupa string, integer, float</li>
+<li><em>method</em>, fungsi yang melekat pada class</li>
+<li><em>constructor</em>, fungsi yang dijalankan oleh python ketika pertama kali suatu objek dibuat. Method constructor ini dibuat dengan cara mendefinisikan fungsi _ <em>init</em> _ (dua <em>underscore</em>)</li>
+<li><em>self</em>, merupakan suatu argumen atau parameter spesial agar nilai balik dari method dikembalikan ke objek itu sendiri. Argumen ini tidak perlu dipanggil (walaupun sudah didefinisikan)pada saat pemanggilan method</li>
+<li><em>instance</em>, suatu objek yang telah dibuat</li>
+<li>
+<p><em>override</em>, mendefinisikan kembali fungsi-fungsi umum yang sudah ada, agar sesuai dengan kebutuhan <em>programmer</em></p>
+</li>
+<li>
+<h3 id="constructor">Constructor</h3>
+</li>
+</ul>
+<p>Syntax untuk membuat suatu class, adalah sebagai berikut :</p>
+<pre><code class="python">class namaClass:
+    def _init_() : #constructor
+    def namaMethod () : #Method
+</code></pre>
+
+<p>Sedangkan untuk membuat suatu obyek dengan tipe data class tertentu (proses pembuatan <em>instance</em>) adalah :</p>
+<pre><code class="python">namaObyek=namaClass()
+</code></pre>
+
+<p><strong>Constructor</strong> merupakan method yang otomatis dijalankan ketika suatu obyek dibuat. Syntax untuk pembuatan <em>constructor</em> ini adalah :</p>
+<pre><code class="python">def __init__()
+</code></pre>
+
+<p>Contoh :</p>
+<pre><code class="python">class BilanganKompleks:
+    def __init__(self,a,b):
+        self.real=a
+        self.im=b
+
+data=BilanganKompleks(4,6)
+print(data)
+</code></pre>
+
+<p>untuk menampilkan property atau nilai yang dimiliki oleh suatu obyek, tidak dapat dilakukan dengan syntax <code>print()</code> seperti biasa.</p>
+<p>Terdapat dua cara agar objek yang sudah dibuat dapat ditampilkan di layar sesuai dengan yang diinginkan, yaitu:</p>
+<ul>
+<li>Membuat method baru untuk menampilkan data</li>
+<li>
+<p><em>override</em> method standar dari sebuah class</p>
+</li>
+<li>
+<h3 id="method">Method</h3>
+</li>
+</ul>
+<p>Method merupakan fungsi-fungsi yang terdapat di dalam suatu class. Contoh method yang akan dibuat adalah method yang berfungsi untuk menampilkan <em>property</em> atau <em>state</em> yang terdapat di dalam suatu obyek. 
+Syntax pembuatan method adalah :</p>
+<pre><code class="python">def namaMethod():
+</code></pre>
+
+<p>Sedangkan untuk memanggil method suatu class adalah : </p>
+<pre><code class="python">namaObyek.namaMethod()
+</code></pre>
+
+<p>Contoh :</p>
+<p>Berikut adalah contoh pembuatan method <code>display()</code> yang berfungsi untuk menampilkan <em>property</em> yang terdapat pada class Bilangan Kompleks.</p>
+<pre><code class="python">class BilanganKompleks:
+    def __init__(self,a,b): # constructor
+        self.real=a
+        self.im=b
+    def display(self): # method untuk menampilkan state
+        print (self.real,'+',self.im,'i')
+data1=BilanganKompleks(4,6)
+data1.display()
+data2=BilanganKompleks(2,3)
+data2.display()
+</code></pre>
+
+<p>Pada contoh code diatas, terdapat method tambahan pada class BilanganKompleks<em>B<strong>i</strong>l<strong>a</strong>n<strong>g</strong>a<strong>n</strong>K<strong>o</strong>m<strong>p</strong>l<strong>e</strong>k<strong>s<em>, yaitu method <code>display()</code>, yang berfungsi untuk menampilkan </em>state<em> atau </em>property<em> obyek dari class BilanganKompleks</em>B</strong>i<strong>l</strong>a<strong>n</strong>g<strong>a</strong>n<strong>K</strong>o<strong>m</strong>p<strong>l</strong>e<strong>k</strong>s</em>. 
+Di dalam method tersebut, digunakan syntax print yang berfungsi untuk menampilkan suatu data. Perintah <code>self.real</code> adalah perintah untuk mengakses <em>state</em> atau <em>property</em> real<em>r<strong>e</strong>a<strong>l<em>, yang dimiliki oleh class BilanganKompleks</em>B</strong>i<strong>l</strong>a<strong>n</strong>g<strong>a</strong>n<strong>K</strong>o<strong>m</strong>p<strong>l</strong>e<strong>k</strong>s</em>, begitu juga dengan perintah <code>self.im</code>, digunakan untuk mengakses <em>property</em> im<em>i<strong>m<em>. Karena property real</em>r</strong>e<strong>a</strong>l</em> dan im<em>i</em><em>m</em> bertipe data integer, maka syntax <code>print()</code> dapat dilakukan pada dua <em>property</em> tersebut</p>
+<h3 id="5-override-method">5. Override Method</h3>
+<p><strong>Override Method</strong> merupakan penambahan fungsi-fungsi pada syntax-syntax yang sudah ada. Seperti yang dijelaskan sebelumnya, untuk menampilkan <em>property</em> yang terdapat pada suatu obyek, tidak dapat dilakukan dengan menggunakan perintah <code>print()</code>. 
+Cara pertama yang sudah dijelaskan adalah membuat method baru di dalam class, yang berfungsi untuk menampilkan <em>property</em> suatu class. 
+Cara kedua adalah dengan cara override method fungsi yang sudah tersedia oleh bahasa pemrograman. Syntax yang akan di<em>override</em> adalah syntax <code>print()</code>. 
+Yang perlu dilakukan agar suatu object dapat dipanggil dengan perintah <em>print</em> adalah object tersebut harus dirubah menjadi string. Untuk merubah suatu variabel menjadi string, maka suatu class dilengkapi dengan method <code>__str__</code>. Hanya saja method ini tidak bisa berfungsi secara sempurna sesuai dengan apa yang diinginkan oleh programmer, yaitu agar syntax <code>print</code> dapat digunakan langsung untuk menampilkan <em>property</em> yang terdapat pada suatu class.</p>
+<p>Contoh Code :</p>
+<p>Berikut contoh override method <code>__str__</code> pada class BilanganKompleks</p>
+<pre><code class="python">class BilanganKompleks:
+    def __init__(self,a,b):
+        self.real=a
+        self.im=b
+    def display(self):
+        print (self.real,&quot;+&quot;,self.im,&quot;i&quot;)
+    def __str__(self):
+        return str(self.real)+&quot; + &quot;+str(self.im)+&quot; i &quot;
+data1=BilanganKompleks(4,6)
+data2=BilanganKompleks(2,5)
+print('Override Method')
+print(data1)
+print(data2)
+print('Method dalam Class')
+data1.display()
+data2.display()
+</code></pre>
+
+<pre><code class="python">Output :
+Override Method
+4+6i
+2+5i
+Method dalam Class
+4 + 6 i
+2 + 5 i
+</code></pre>
+
+<p>Penjumlahan dua buah bilangan kompleks berbeda dengan penjumlahan bilangan yang lain, karena bilangan kompleks ini terdiri dari dua bagian yaitu real dan imajiner. Untuk menjumlahkan bilangan kompleks. maka bagian real harus dijumlahkan pada bagian real juga dari bilangan lain, dan bagian imajiner harus ditambahkan dengan bagian imajiner.</p>
+<h3 id="b-code">B. Code</h3>
+<p>Contoh code berikut adalah pembuatan method baru di dalam class, yang berfungsi untuk menjumlahkan dua buah bilangan kompleks.</p>
+<pre><code class="python">class BilanganKompleks:
+    def __init__(self,a,b):
+        self.real=a
+        self.im=b
+    def display(self):
+        print (self.real,'+',self.im,'i')
+    def __str__(self):
+        return str(self.real) + &quot; + &quot; + str(self.im) + &quot; i &quot;
+    def addKompleks(self,obj):
+        a=self.real+obj.real
+        b=self.im+obj.im
+        return BilanganKompleks(a,b)
+data1=BilanganKompleks(4,6)
+data2=BilanganKompleks(2,5)
+jumlah=data1.addKompleks(data2)
+data1.display()
+data2.display()
+print(jumlah)
+</code></pre>
+
+<pre><code class="python">Output :
+4 + 6 i
+2 + 5 i
+6 + 11 i 
+</code></pre>
+
+<p>Ketika ingin melakukan operasi penjumlahan dengan menggunakan operator '+', maka tidak dapat langsung dilakukan perintah sebagai berikut :</p>
+<pre><code class="python">data1=BilanganKompleks(4,6)
+data2=BilanganKompleks(2,5)
+jumlah=data1+data2
+</code></pre>
+
+<p>Operasi penjumlahan dengan operator '+' hanya dapat dilakukan dengan <em>override</em> fungsi <code>__add__</code> yang sudah tersedia.</p>
+<p><strong>Latihan Praktikum</strong></p>
+<ol>
+<li>. Buatlah class Matrix dengan beberapa method seperti berikut :
+   a. Constructor : untuk inisialisasi matriks, dengan parameter berupa jumlah
+   baris dan kolom suatu matrix, dan elemen matriks merupakan inputan dari user (di dalam
+   constructor)
+   b. Override method <strong>str</strong> : untuk menampilkan matriks
+   Gunakan formatting string jika diperlukan
+   c. Override method <strong>add</strong> : untuk menjumlahkan dua buah matriks
+   Pada method ini, haruslah dilakukan pengecekan, jika ukuran dua buah matriks yang akan
+   dijumlahkan tidak sama, maka akan mengeluarkan warning bahwa ukuran tidak sama
+   d. Override method <strong>mul</strong> : untuk mengalikan dua buah matriks
+   Pada method ini, haruslah dilakukan pengecakan, jika jumlah kolom pada matriks pertama
+   tidak sama dengan jumlah baris pada matriks kedua, maka akan mengeluarkan warning
+   bahwa ukuran matriks tidak sesuai. </li>
+</ol>
+<pre><code class="python">#Ach Choirul Umamm
+#160411100075
+#StrukdatD2
+class matriks:
+    #mat = {}
+    def __init__(self, baris, kolom):
+        self.b = []
+        self.baris = baris
+        self.kolom = kolom
+        for line in range(self.baris):
+            k = []
+            for cols in range(self.kolom):
+                k.append(0)
+            self.b.append(k)
+        inp = int(input(&quot;masukkan jumlah element : &quot;))
+        for i in range(inp):
+            bar = int(input(&quot;baris ke? : &quot;))
+            kol = int(input(&quot;kolom ke? : &quot;))
+            element = int(input(&quot;baris [{}][{}] : &quot;.format(bar,kol)))
+            self.b[bar][kol] = element
+
+    def __str__(self):
+        data = &quot;&quot;
+        for i in range(len(self.b)):
+            data += &quot;| &quot;
+            for t in range(len(self.b[0])):
+                data += str(self.b[i][t])
+            data += &quot; |\n&quot;
+        return data
+
+    def __add__(self, tambah):
+        angka = &quot;1234567890&quot;
+        mat1 = []
+        kol1 = []
+        hasil = []
+        data = &quot;&quot;
+        for t in range(len(tambah.b)):
+            if str(tambah.b[t]) in angka:
+                kol1.append(tambah.b[t])
+            else:
+                kol1 = []
+                mat1.append(kol1)
+        if len(self.b) == len(tambah.b):
+            if len(tambah.b[0]) == len(self.b[0]):
+                for u in range(len(self.b)):
+                    data += &quot;| &quot;
+                    kolo = []
+                    for j in range(len(self.b[0])):
+                        has = tambah.b[u][j] + self.b[u][j]
+                        data += str(has)
+                        kolo.append(has)
+                    mat1.append(kolo)
+                    data += &quot; |\n&quot;
+                return &quot;hasil Penjumlahan\n&quot; + data
+            else:
+                return &quot;penjumlahan tidak bisa dilakukan karena jumlah kolom tidak sama&quot;
+        else:
+            return &quot;penjumlahan tidak bisa dilakukan karena Jumlah baris tidak sama&quot;
+
+    def __mul__(self, kali):
+        angka = &quot;1234567890&quot;
+        data = &quot;&quot;
+        mat1 = []
+        kol1 = []
+        for t in range(len(kali.b)):
+            if str(kali.b[t]) in angka:
+                kol1.append(kali.b[t])
+            else:
+                kol1 = []
+                mat1.append(kol1)
+        if len(self.b[0]) == len(kali.b):
+            mat_bar = []
+            for i in range(len(self.b)):
+                data += &quot;| &quot;
+                hasil = 0
+                mat_kol = []
+                for y in range(len(kali.b[0])):
+                    for t in range(len(self.b[0])):
+                        a = self.b[i][t]
+                        b = kali.b[t][y]
+                        perkalian = a*b
+                        hasil = hasil + perkalian
+                    data += str(hasil)
+                    mat_kol.append(hasil)
+                mat_bar.append(mat_kol)
+                data += &quot; |\n&quot;
+            return &quot;hasil dari perkalian = \n&quot; + data
+        else:
+            return &quot;perkalian tidak bisa dilakukan karena jumlah kolom matrik1 tidak sama dengan jumlah kolom matrik2&quot;
+
+
+obj1 = matriks(2,2)
+print(obj1)
+obj2 = matriks(2,2)
+print(obj2)
+jumlah = obj1.__add__(obj2)
+print(jumlah)
+
+kali = obj1.__mul__(obj2)
+print(kali)
+</code></pre>
+
+<pre><code class="python">Output :
+    masukkan jumlah element : 2
+baris ke? : 0
+kolom ke? : 1
+baris [0][1] : 2
+baris ke? : 1
+kolom ke? : 1
+baris [1][1] : 2
+| 02 |
+| 02 |
+
+masukkan jumlah element : 2
+baris ke? : 0
+kolom ke? : 1
+baris [0][1] : 3
+baris ke? : 1
+kolom ke? : 0
+baris [1][0] : 1
+| 03 |
+| 10 |
+
+hasil Penjumlahan
+| 05 |
+| 12 |
+
+hasil dari perkalian = 
+| 22 |
+| 22 |
+</code></pre>
+
+<ol>
+<li>Buatlah class LinkedList, dengan beberapa method tambahan pada class LinkedList seperti
+   berikut (untuk constructor LinkedList, dan class Node dapat dilihat pada materi perkuliahan):
+   a. addRear : untuk menambahkan node di belakang linkedlist
+   b. override method <strong>str</strong> : untuk menampilkan data linked list
+   c. override method <strong>add</strong> : untuk menambahkan data dari dua buah linked list,
+   dengan ketentuan, jumlah node pada linked list hasil penjumlahan sama dengan jumlah
+   node terbanyak dari linked list yang akan dijumlahkan. </li>
+</ol>
+<pre><code class="python">#Ach. Choirul Umam
+#160411100075
+class Node:
+    def __init__(self,init_data):
+        self.data = init_data
+        self.next = None
+    def getData(self):
+        return self.data
+    def getNext(self):
+        return self.next
+    def setData(self,new_data):
+        self.data = new_data
+    def setNext(self,next_data):
+        self.next = next_data
+
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def isEmpty(self):
+        return self.head==None
+
+    def addprev(self,item):
+        temp = Node(item)
+        temp.setNext(self.head)
+        self.head = temp
+
+    def addnext(self,item):
+        temp = Node(item)
+        current=self.head
+        while current.getNext()!=None:
+            current=current.getNext()
+        current.setNext(temp)
+
+    def size(self):
+        current = self.head
+        count=0
+        while current != None:
+            count=count+1
+            current=current.getNext()
+        return count
+
+    def search(self,item):
+        current=self.head
+        found=False
+        while current != None and not found:
+            if current.getData() == item:
+                found=True
+            else:
+                current=current.getNext()
+        return found
+
+    def tampil(self):
+        current=self.head
+        print(&quot;head-&gt;&quot;,end=&quot; &quot;)
+        while current:
+            print(current.getData(),end=&quot;-&gt;&quot;)
+            current=current.getNext()
+        print(&quot;none&quot;)
+
+    def remove(self,item):
+        current=self.head
+        found=False
+        previous= None
+        while not found:
+            if current.getData()==item:
+                found=True
+            else:
+                previous = current
+                current = current.getNext()
+        if previous == None:
+            self.head=current.getNext()
+        else:
+            previous.setNext(current.getNext())
+
+    def index(self, item):
+        count = 0;current = self.head
+        if item &lt; 0: item = self.size()+item
+        while current != None:
+            if count==item: return current.getData()
+            current = current.getNext()
+            count += 1
+        print('Index melebihi jumlah data')  
+#========================================================
+#===================  LINKED LIST  =========================
+#========================================================
+mylist=LinkedList()
+mylist2=LinkedList()
+mylist3=LinkedList()
+#=======================================================
+list1=&quot;y&quot;
+c=input(&quot;masukkan angka list ke-1:&quot;)
+mylist.addprev(c)
+while list1==&quot;y&quot;:
+    a=input(&quot;masukkan angka list ke-1:&quot;)
+    mylist.addnext(a)
+    list1=input(&quot;tekan y jika lagi dan tekan t jika tidak:&quot;)
+
+#=====================================================
+list2=&quot;y&quot;
+d=input(&quot;masukkan angka list ke-2:&quot;)
+mylist2.addprev(d)
+while list2==&quot;y&quot;:
+    b=input(&quot;masukkan angka list ke-2:&quot;)
+    mylist2.addnext(b)
+    list2=input(&quot;tekan y jika lagi dan tekan t jika tidak:&quot;)
+#====================================================
+print(&quot;\n==============================&quot;)
+mylist.tampil()
+mylist2.tampil()
+print(&quot;==============================&quot;)
+print(&quot;Hasil Dari Penjumlahan nya adalah :&quot;)
+
+#====================================================
+if mylist.size()&gt;mylist2.size():
+    ha=mylist.size()-mylist2.size()
+    for i in range(ha):
+        mylist2.addnext(0)
+
+
+elif mylist.size()&lt;mylist2.size():
+    ha=mylist2.size()-mylist.size()
+    for i in range(ha):
+        mylist.addnext(0)
+#====================================================       
+tambahawal=int(mylist.index(0))+int(mylist2.index(0))
+mylist3.addprev(tambahawal)
+for i in range(1,mylist.size()):
+    tambah=int(mylist.index(i))+int(mylist2.index(i))
+    mylist3.addnext(tambah)
+mylist3.tampil()
+print(&quot;==============================&quot;)    
+
+
+</code></pre>
+
+<pre><code class="python">Output :
+    masukkan angka list ke-1:1
+masukkan angka list ke-1:1
+tekan y jika lagi dan tekan t jika tidak:y
+masukkan angka list ke-1:3
+tekan y jika lagi dan tekan t jika tidak:y
+masukkan angka list ke-1:3
+tekan y jika lagi dan tekan t jika tidak:t
+masukkan angka list ke-2:1
+masukkan angka list ke-2:1
+tekan y jika lagi dan tekan t jika tidak:y
+masukkan angka list ke-2:2
+tekan y jika lagi dan tekan t jika tidak:y
+masukkan angka list ke-2:2
+tekan y jika lagi dan tekan t jika tidak:t
+
+==============================
+head-&gt; 1-&gt;1-&gt;3-&gt;3-&gt;none
+head-&gt; 1-&gt;1-&gt;2-&gt;2-&gt;none
+==============================
+Hasil Dari Penjumlahan nya adalah :
+head-&gt; 2-&gt;2-&gt;5-&gt;5-&gt;none
+==============================
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2019 Ach Choirul Umam, 160411100075</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

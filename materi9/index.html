@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Choirul Umam 160411100075">
+        <link rel="canonical" href="https://squidfunk.github.io/mkdocs-material/materi9/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Materi 9 Graph - Materi Struktur Data</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">Materi Struktur Data</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Pendahuluan</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Materi <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../materi1/">Materi 1 Stack</a>
+</li>
+                                    
+<li >
+    <a href="../materi2/">Materi 2 infix, prefix, postfix</a>
+</li>
+                                    
+<li >
+    <a href="../materi3/">Materi 3 Classes</a>
+</li>
+                                    
+<li >
+    <a href="../materi4/">Materi 4 Linked List</a>
+</li>
+                                    
+<li >
+    <a href="../materi5/">Materi 5 Rekursif</a>
+</li>
+                                    
+<li >
+    <a href="../materi6/">Materi 6 Searching</a>
+</li>
+                                    
+<li >
+    <a href="../materi7/">Materi 7 Hashing</a>
+</li>
+                                    
+<li >
+    <a href="../materi8/">Materi 8 Tree</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Materi 9 Graph</a>
+</li>
+                                </ul>
+                            </li>
+                            <li >
+                                <a href="../Profil/">Profil</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../materi8/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../Profil/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#graph">Graph</a></li>
+            <li><a href="#a-definisi">A. Definisi</a></li>
+            <li><a href="#b-algoritma">B. Algoritma</a></li>
+            <li><a href="#c-kode-program">C. Kode Program</a></li>
+            <li><a href="#representasi-graph">Representasi Graph</a></li>
+            <li><a href="#graph-traversal">GRaph Traversal</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="graph">Graph</h1>
+<h3 id="a-definisi">A. Definisi</h3>
+<p><em>Graph</em> adalah salah satu metode pemetaan data dengan memberikan informasi pada kumpulan titik (<em>node</em>) yang dihubungkan dengan segmen garis. Titik ini atau Node disebut <em>verteks</em>sedangkan segmen garis disebut dengan ruas (<em>edge</em>).</p>
+<h3 id="b-algoritma">B. Algoritma</h3>
+<p>Alur program dari graph untuk mencari semua path, path terpendek, dan path terpanjang yang akan dicontohkan di kode program dibawah ini adalah :
+1. Membuat fungsi yang berisi paramater graph tersebut, permulaan path, akhir path, variabel tempat yang akan diisi path.
+2. Variabel tempat yang akan diisi path ditambah permulaan path.
+3. Jika permulaan path sama dengan akhir path maka variabel tempat yang akan diisi path di tampilkan.
+4. Jika permulaan path tidak berada di graph tersebut maka hasilnya adalah None atau tidak ada.
+5. Pengulangan dimulai dari graph yang berobjek permulaan path.
+6. Jika node tidak berada di path maka memulai fungsi pencarian nomor 1 dengan parametergraph tersebut,  node, akhir path, variabel terakhir yang akan diisi path.</p>
+<p>Istilah Dalam graph :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Vertex (V)</strong></th>
+<th>adalah bagian paling dasar dari grafik atau yang disebut juga sebagai <em>node</em>/titik</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Edge (E)</strong></td>
+<td>adalah bagian dari <em>graph</em> yang menghubungkan 2 <em>vertex</em>/<em>node</em>/titik</td>
+</tr>
+<tr>
+<td><strong>Weight (W)</strong></td>
+<td>adalah sebuah nilai dalam <em>graph</em> atau yang menunjukan biaya yang dibutuhkan untuk berpindah dari satu titik ke titik yang lain. Misalnya sebuah peta diinterpestasikan dalam <em>graph</em>, maka jarak satu kota ke kota lain disebut <em>Weight</em>.</td>
+</tr>
+<tr>
+<td><strong>Path</strong></td>
+<td>adalah serangkaian <em>vertex</em> yang berbeda-beda yang berdekatan dihubungkan oleh <em>edge</em> dan berturut-turut dari <em>vertex</em> satu ke <em>vertex</em>berikutnya. <em>Path</em> dari a<em>a</em> ke c<em>c</em> adalah urutan <em>vertex</em> (a,b,c)(<em>a</em>,<em>b</em>,<em>c</em>) yang terdiri dari beberapa pasang <em>Edge</em> {(a,b), (b,c)}{(<em>a</em>,<em>b</em>),(<em>b</em>,<em>c</em>)} atau urutan <em>vertex</em> (a,d,c)(<em>a</em>,<em>d</em>,<em>c</em>) yang terdiri dari beberapa pasang <em>Edge</em> {(a,d), (b,c)}{(<em>a</em>,<em>d</em>),(<em>b</em>,<em>c</em>)}</td>
+</tr>
+</tbody>
+</table>
+<h3 id="c-kode-program">C. Kode Program</h3>
+<p>Contoh program dari <em>graph</em> adalah sebagai berikut ini : </p>
+<pre><code class="python">def find_path(graph, start, end, path=[]):
+    path+=[start]
+    print('Path Awal', path)
+    if start == end:
+        return path
+    if start not in graph:
+        return None
+    for node in graph[start]:
+        print('Node sekarang %s dari Start %s'%(node,start))
+        if node not in path:
+            print('Path Kedua', node)
+            newpath = find_path(graph, node, end,path)
+            print('Newpath = ',newpath)
+            if newpath: return newpath
+    return None
+
+def find_all_paths(graph, start, end, path=[]):
+    path = path + [start]
+    print('Path Awal', path)
+    if start == end:
+        return [path]
+    if start not in graph:
+        return []
+    paths = []
+    for node in graph[start]:
+        print('Node sekarang %s dari Start %s'%(node,start))
+        if node not in path:
+            newpaths = find_all_paths(graph, node, end, path)
+            print('Newpaths = ', newpaths)
+            for newpath in newpaths:
+                paths.append(newpath)
+    print('Semua Path', paths)
+    return paths
+
+def find_shortest_path(graph, start, end, path=[]):
+    path = path + [start]
+    print('Path Awal =',path)
+    if start == end:
+        return path
+    if start not in graph:
+        return None
+    shortest = None
+
+    for node in graph[start]:
+        print('Node sekarang %s dari Start %s'%(node,start))
+        if node not in path:
+            newpath = find_shortest_path(graph, node, end, path)
+            print('Newpath = ', newpath)
+            if newpath:
+                if not shortest or len(newpath) &lt; len(shortest):
+                    shortest = newpath
+    print('Path Terpendek = ',shortest)
+    return shortest
+
+def find_longest_path(graph, start, end, path=[]):
+    path = path + [start]
+    print('Path Awal',path)
+    if start == end:
+        return path
+    if start not in graph:
+        return None
+    longest = None
+
+    for node in graph[start]:
+        print('Node sekarang %s dari Start %s'%(node,start))
+        if node not in path:
+            newpath = find_longest_path(graph, node, end, path)
+            print('Newpath = ', newpath)
+            if newpath:
+                if not longest or len(newpath) &gt; len(longest):
+                    longest = newpath         
+    print('Path Terpanjang = ',longest)
+    return longest
+
+
+graph = {'A' : ['B','C'],
+         'B' : ['C','D'],
+         'C' : ['D'],
+         'D' : ['C'],
+         'E' : ['F'],
+         'F' : ['C']}
+print('================ Mencari Path ===================')
+print('hasil akhir', find_path(graph, 'A', 'C'))
+print('================ Mencari Semua Path ===================')
+print('hasil akhir semua path', find_all_paths(graph, 'A', 'C'))
+print('================ Mencari Path Terpendek ===================')
+print('hasil akhir path terpendek', find_shortest_path(graph, 'A', 'C'))
+print('================ Mencari Path Terpanjang ===================')
+print('hasil akhir path terpanjang', find_longest_path(graph, 'A', 'C'))
+
+</code></pre>
+
+<h3 id="representasi-graph">Representasi Graph</h3>
+<p>Terdapat Beberapa Representasi untuk graph yaitu :</p>
+<ol>
+<li>Adjacency List</li>
+<li>Adjacency Matrix</li>
+</ol>
+<h3 id="graph-traversal">GRaph Traversal</h3>
+<p><em>Graph Traversal</em> merupakan proses mengunjungi setiap <em>vertex</em>/<em>node</em> . <em>Graph Traversal</em> digunakan untuk mencari jalur dalam suatu <em>graph</em> dari titik asal ke titik tujuan, mencari jalur terpendek antara dua <em>node</em>/<em>vertex</em>, menemukan semua jalur yang bisa dilalui dari titik asal ke titik tujuan. </p>
+<p>Contoh :</p>
+<pre><code class="python">graph = {'a': ['b', 'd'],'b': ['a', 'd'], 'c': ['d'], 'd': ['a', 'b', 'c']}
+def find_path(graph, start, end, path=[]):
+    path = path + [start]
+    for node in graph[start]:
+        if not node in path:
+            newpath = find_path(graph, node, end, path)
+            if newpath:
+                return newpath
+    if start == end:
+        return path
+    if not start in graph:
+        return None
+    return None
+
+print(find_path(graph,'a','d'))
+
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2019 Ach Choirul Umam, 160411100075</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

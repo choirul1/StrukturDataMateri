@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Choirul Umam 160411100075">
+        <link rel="canonical" href="https://squidfunk.github.io/mkdocs-material/materi2/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Materi 2 infix, prefix, postfix - Materi Struktur Data</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">Materi Struktur Data</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Pendahuluan</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Materi <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../materi1/">Materi 1 Stack</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Materi 2 infix, prefix, postfix</a>
+</li>
+                                    
+<li >
+    <a href="../materi3/">Materi 3 Classes</a>
+</li>
+                                    
+<li >
+    <a href="../materi4/">Materi 4 Linked List</a>
+</li>
+                                    
+<li >
+    <a href="../materi5/">Materi 5 Rekursif</a>
+</li>
+                                    
+<li >
+    <a href="../materi6/">Materi 6 Searching</a>
+</li>
+                                    
+<li >
+    <a href="../materi7/">Materi 7 Hashing</a>
+</li>
+                                    
+<li >
+    <a href="../materi8/">Materi 8 Tree</a>
+</li>
+                                    
+<li >
+    <a href="../materi9/">Materi 9 Graph</a>
+</li>
+                                </ul>
+                            </li>
+                            <li >
+                                <a href="../Profil/">Profil</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../materi1/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../materi3/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#infix-prefix-dan-postfix">Infix, Prefix dan postfix</a></li>
+            <li><a href="#a-definisi">A. Definisi</a></li>
+            <li><a href="#b-ilustrasi">B. Ilustrasi</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="infix-prefix-dan-postfix">Infix, Prefix dan postfix</h1>
+<h2 id="a-definisi"><strong>A. Definisi</strong></h2>
+<h3 id="infix">Infix</h3>
+<p>adalah cara penulisan atau ungkapan yang meletakan operator di tengah antara 2 operand dalam hal ini dalam kurung sangat menentukan posisi.</p>
+<p>Contoh Infix :</p>
+<p>A + B</p>
+<p>( A - B ) * C</p>
+<h3 id="prefix">Prefix</h3>
+<p>adalah cara penulisan atau ungkapan yang meletakan operator disebelah kiri 2 operand dan dalam kurung sangat menentukan posisi.</p>
+<p>Contoh Prefix :</p>
+<p>+ A B</p>
+<p>* - A B C</p>
+<h3 id="posfix">Posfix</h3>
+<p>adalah cara penulisan yang meletakan operator disebelah kanan 2 operand dan posisi operand yang berada di dalam kurung sangat menentukan.</p>
+<p>Contoh Postfix :</p>
+<p>A B +</p>
+<p>A B - C *</p>
+<h2 id="b-ilustrasi"><strong>B. Ilustrasi</strong></h2>
+<p><strong>&gt; Ilustrasi Konversi Infix ke Prefix</strong></p>
+<p>Contoh : </p>
+<p><strong>A * B + C</strong></p>
+<p>proses : </p>
+<p>infix dibalik menjadi C + B * A</p>
+<p>Looping Dimulia</p>
+<table>
+<thead>
+<tr>
+<th>Karakter Yang Dibaca</th>
+<th>Isi Stack</th>
+<th>Karakter Tercetak</th>
+<th>Hasil Postfix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td></td>
+<td>C</td>
+<td>C</td>
+</tr>
+<tr>
+<td>+</td>
+<td>+</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>B</td>
+<td></td>
+<td>B</td>
+<td>CB</td>
+</tr>
+<tr>
+<td>*</td>
+<td>+*</td>
+<td></td>
+<td>CB</td>
+</tr>
+<tr>
+<td>A</td>
+<td>+*</td>
+<td>A</td>
+<td>CBA</td>
+</tr>
+<tr>
+<td></td>
+<td>+</td>
+<td>*</td>
+<td>CBA*</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>+</td>
+<td>CBA*+</td>
+</tr>
+</tbody>
+</table>
+<p>Hasil Postfix = C B A + *</p>
+<p>Hasil Postfix dibalik untuk menjadi hasil prefix</p>
+<p>Hasil Prefix = * + A B C</p>
+<p><strong>&gt; Ilustrasi Konversi Infix ke Postfix</strong></p>
+<p>Contoh :</p>
+<p><strong>A * B  + C</strong></p>
+<p>Proses :</p>
+<table>
+<thead>
+<tr>
+<th>Karakter Yang Dibaca</th>
+<th>Isi Stack</th>
+<th>Karakter Tercetak</th>
+<th>Hasil Postfix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td></td>
+<td>A</td>
+<td>A</td>
+</tr>
+<tr>
+<td>*</td>
+<td>*</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>B</td>
+<td></td>
+<td>B</td>
+<td>AB</td>
+</tr>
+<tr>
+<td>+</td>
+<td>+</td>
+<td>*</td>
+<td>AB*</td>
+</tr>
+<tr>
+<td>C</td>
+<td>+</td>
+<td>C</td>
+<td>AB*C</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>+</td>
+<td>AB*C+</td>
+</tr>
+</tbody>
+</table>
+<p>Hasil Postfix = A B * C +</p>
+<p>Contoh Aritmatik infix dan konversi ke prefix dan postfix</p>
+<table>
+<thead>
+<tr>
+<th>Infix</th>
+<th>Prefix</th>
+<th>Postfix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A + B</td>
+<td>+ A B</td>
+<td>A B +</td>
+</tr>
+<tr>
+<td>(A+B)*C</td>
+<td>*+ABC</td>
+<td>AB+C*</td>
+</tr>
+<tr>
+<td>(A+B)*(C-D)</td>
+<td>*+AB-CD</td>
+<td>AB+CD-*</td>
+</tr>
+<tr>
+<td>A+B*C-D</td>
+<td>-+A*BCD</td>
+<td>ABC*+D-</td>
+</tr>
+<tr>
+<td>A+B-C+D</td>
+<td>+-+ABCD</td>
+<td>AB+C-D+</td>
+</tr>
+<tr>
+<td>A*B - C * D</td>
+<td>-* AB * CD</td>
+<td>AB * CD*-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="c-algoritma">C. Algoritma</h3>
+<p>Berikut ini algoritma dari konversi Infix ke Postfix:</p>
+<ol>
+<li>Buat presisi atau kekuatan operator ( Penjumlahan dan Pengurangan bernilai 2 , Perkalian dan Pembagian bernilai 3 , Kurang buka dan tutup bernilai 1 )</li>
+<li>Input data dalam bentuk infix</li>
+<li>Pisahkan data infix menggunakan split menjadi bentuk List</li>
+<li>Periksa semua data yang berada di dalam list secara urut mulai dari awal hingga akhir</li>
+<li>Jika bertemu operand, maka masukan data ke PostfixList untuk dicetak</li>
+<li>Jika bertemu kurung buka '(' maka masukan ke Stack Operator</li>
+<li>Jika bertemu kurung tutup ')' maka Stack Operator yang paling atas dan bukan kurung buka '(' diambil untuk dicetak ke PostfixList</li>
+<li>Jika bertemu operator maka jika Stack Operator tidak kosong dan kekuatan operator yang digunakan lebih kecil dari kekuatan operator yang berada di top Stack Operator maka operator yang berada di Stack Operator diambil (pop) untuk dicetak di PostfixList. lalu masukan operator yang digunakan ke dalam Stack Operator.</li>
+<li>Begitu seterusnya sampai List yang berisi data Infix habis.</li>
+<li>Jika Stack Operator masih ada isinya maka ambil dan tambahkan ke PostfixList untuk dicetak.</li>
+<li>Cetak PostfixList</li>
+</ol>
+<p>Berikut ini Algoritma dari konversi Infix ke Prefix:</p>
+<ol>
+<li>Balikan data Infix</li>
+<li>Jika operator kurung buka '(' maka ganti dengan kurung tutup ')' begitu sebaliknya</li>
+<li>Masukan data tersebut ke konversi Infix ke Postfix </li>
+<li>Setelah keluar hasil, Balikan lagi hasil tersebut</li>
+<li>Maka keluar bentuk Prefix</li>
+</ol>
+<p><strong>D. Kode Program</strong></p>
+<p>Berikut ini kode program Konversi dari Infix ke bentuk Postfix :</p>
+<pre><code class="python">class Stack:
+     def __init__(self):
+         self.items = []
+     def isEmpty(self):
+         return self.items == []
+     def push(self, item):
+         self.items.append(item)
+     def pop(self):
+         return self.items.pop()
+     def peek(self):
+         return self.items[len(self.items)-1]
+     def size(self):
+         return len(self.items)
+     def showList(self):
+          return self.items
+
+def infixToPostfix(infixexpr):
+    prec = {}
+    prec[&quot;*&quot;] = 3
+    prec[&quot;/&quot;] = 3
+    prec[&quot;+&quot;] = 2
+    prec[&quot;-&quot;] = 2
+    prec[&quot;(&quot;] = 1
+    opStack = Stack()
+    postfixList = []
+    tokenList = infixexpr.split()
+    print(tokenList)
+
+
+    for token in tokenList:
+        if token in &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot; or token in &quot;0123456789&quot;:
+            postfixList.append(token)
+        elif token == '(':
+            opStack.push(token)
+        elif token == ')':
+            topToken = opStack.pop()
+
+            while topToken != '(':
+                postfixList.append(topToken)
+                topToken = opStack.pop()
+        else:
+            while (not opStack.isEmpty()) and \
+               (prec[opStack.peek()] &gt;= prec[token]):
+                  postfixList.append(opStack.pop())
+            opStack.push(token)
+        print('isi postix ',str(postfixList))
+
+    while not opStack.isEmpty():
+        postfixList.append(opStack.pop())
+    print('isi postix ',str(postfixList))
+    return &quot; &quot;.join(postfixList)
+
+print(infixToPostfix(&quot;A * B - C * D&quot;))
+print(infixToPostfix(&quot;( A + B ) * C - ( D - E ) * ( F + G )&quot;))
+
+
+
+</code></pre>
+
+<pre><code class="python">Output :
+    ['A', '*', 'B', '-', 'C', '*', 'D']
+('isi postix ', &quot;['A']&quot;)
+('isi postix ', &quot;['A']&quot;)
+('isi postix ', &quot;['A', 'B']&quot;)
+('isi postix ', &quot;['A', 'B', '*']&quot;)
+('isi postix ', &quot;['A', 'B', '*', 'C']&quot;)
+('isi postix ', &quot;['A', 'B', '*', 'C']&quot;)
+('isi postix ', &quot;['A', 'B', '*', 'C', 'D']&quot;)
+('isi postix ', &quot;['A', 'B', '*', 'C', 'D', '*', '-']&quot;)
+A B * C D * -
+['(', 'A', '+', 'B', ')', '*', 'C', '-', '(', 'D', '-', 'E', ')', '*', '(', 'F', '+', 'G', ')']
+('isi postix ', '[]')
+('isi postix ', &quot;['A']&quot;)
+('isi postix ', &quot;['A']&quot;)
+('isi postix ', &quot;['A', 'B']&quot;)
+('isi postix ', &quot;['A', 'B', '+']&quot;)
+('isi postix ', &quot;['A', 'B', '+']&quot;)
+('isi postix ', &quot;['A', 'B', '+', 'C']&quot;)
+('isi postix ', &quot;['A', 'B', '+', 'C', '*']&quot;)
+('isi postix ', &quot;['A', 'B', '+', 'C', '*']&quot;)
+('isi postix ', &quot;['A', 'B', '+', 'C', '*', 'D']&quot;)
+('isi postix ', &quot;['A', 'B', '+', 'C', '*', 'D']&quot;)
+('isi postix ', &quot;['A', 'B', '+', 'C', '*', 'D', 'E']&quot;)
+('isi postix ', &quot;['A', 'B', '+', 'C', '*', 'D', 'E', '-']&quot;)
+('isi postix ', &quot;['A', 'B', '+', 'C', '*', 'D', 'E', '-']&quot;)
+('isi postix ', &quot;['A', 'B', '+', 'C', '*', 'D', 'E', '-']&quot;)
+('isi postix ', &quot;['A', 'B', '+', 'C', '*', 'D', 'E', '-', 'F']&quot;)
+('isi postix ', &quot;['A', 'B', '+', 'C', '*', 'D', 'E', '-', 'F']&quot;)
+('isi postix ', &quot;['A', 'B', '+', 'C', '*', 'D', 'E', '-', 'F', 'G']&quot;)
+('isi postix ', &quot;['A', 'B', '+', 'C', '*', 'D', 'E', '-', 'F', 'G', '+']&quot;)
+('isi postix ', &quot;['A', 'B', '+', 'C', '*', 'D', 'E', '-', 'F', 'G', '+', '*', '-']&quot;)
+A B + C * D E - F G + * -
+</code></pre>
+
+<p>Berikut Kode Program konversi Infix ke Prefix :</p>
+<pre><code class="python">class Stack:
+     def __init__(self):
+         self.items = []
+     def isEmpty(self):
+         return self.items == []
+     def push(self, item):
+         self.items.append(item)
+     def pop(self):
+         return self.items.pop()
+     def peek(self):
+         return self.items[len(self.items)-1]
+     def size(self):
+         return len(self.items)
+     def showList(self):
+          return self.items
+# No 1
+def infixToPrefix(infixexpr):
+
+    prec = {'*':3, '/':3 , '+':2, '-':2 , '(':1}
+    opStack = Stack()
+    prefixList = []
+    tokenList = infixexpr.split()
+    tokenList.reverse()
+    for i in range(len(tokenList)):
+         if tokenList[i] == '(':
+              tokenList[i]=')'
+         elif tokenList[i] == ')':
+              tokenList[i]='('
+    for token in tokenList:
+        if token in &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot; or token in &quot;0123456789&quot;:
+            prefixList.append(token)
+        elif token == '(':
+            opStack.push(token)
+        elif token == ')':
+            topToken = opStack.pop()
+
+            while topToken != '(':
+                prefixList.append(topToken)
+                topToken = opStack.pop()
+        else:
+            while (not opStack.isEmpty()) and \
+               (prec[opStack.peek()] &gt;= prec[token]):
+                  prefixList.append(opStack.pop())
+            opStack.push(token)
+
+    while not opStack.isEmpty():
+        prefixList.append(opStack.pop())
+    prefixList = prefixList[::-1]
+    return &quot; &quot;.join(prefixList)
+
+print('No 1')
+print(infixToPrefix(&quot;A * B - C * D&quot;))
+print(infixToPrefix(&quot;( A + B ) * C - ( D - E ) * ( F + G )&quot;))
+</code></pre>
+
+<pre><code class="python">Output :
+No 1
+- * A B * C D
+- * + A B C * - D E + F G
+</code></pre>
+
+<p><strong>Latihan Praktikum</strong></p>
+<ol>
+<li>reverseWord (kata) :
+   Gunakan fungsi-fungsi yang terdapat pada modul stack untuk membalik suatu kata. Output dari
+   fungsi reverseWord(kata) ini adalah kata yang sudah disusun secara terbalik, </li>
+</ol>
+<pre><code class="python">#Ach. choirul Umam
+#160411100075
+#no1
+
+def stack():
+    s=[]
+    return(s)
+
+def push(s,data):
+    s.append(data)
+
+def pop(s):
+    data=s.pop()
+    return(data)
+
+def peek(s):
+    return(s[len(s)-1])
+
+def isEmpty(s):
+    return (s==[])
+
+def size(s):
+    return (len(s))
+
+def balik(teks):
+    a=stack()
+    hasil =''
+    for i in range(len(teks)):
+        push(a, teks[i])
+    for i in range (len(teks)):
+        hasil=hasil+pop(a)
+    return hasil
+print(balik('madura'))
+
+</code></pre>
+
+<pre><code class="python">Output :
+arudam
+</code></pre>
+
+<ol>
+<li>decToBin(num) :
+   Gunakan fungsi-fungsi yang terdapat pada modul stack untuk mengkonversi suatu bilangan
+   decimal menjadi bilangan biner, </li>
+</ol>
+<pre><code class="python">#Ach. choirul Umam
+#160411100075
+#no2
+
+def stack():
+    s=[]
+    return(s)
+
+def push(s,data):
+    s.append(data)
+
+def pop(s):
+    data=s.pop()
+    return(data)
+
+def peek(s):
+    return(s[len(s)-1])
+
+def isEmpty(s):
+    return (s==[])
+
+def size(s):
+    return (len(s))
+
+def biner(desi):
+    st=stack()
+    des=desi
+    while des&gt;0:
+        push(st,str(des%2))
+        des=des//2
+    hasil=''
+    while not isEmpty(st):
+        if len(st)==1:
+            hasil=hasil+st.pop()
+        else:
+            hasil=hasil+st.pop()+&quot;.&quot;
+    return(hasil)
+
+s=int(input(&quot;masukkan nilai desimal:&quot;))
+print(&quot;HAsil biner : &quot;+biner(s))
+
+</code></pre>
+
+<pre><code class="python">Output :
+    masukkan nilai desimal:25
+    HAsil biner : 1.1.0.0.1
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2019 Ach Choirul Umam, 160411100075</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Choirul Umam 160411100075">
+        <link rel="canonical" href="https://squidfunk.github.io/mkdocs-material/materi5/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Materi 5 Rekursif - Materi Struktur Data</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">Materi Struktur Data</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Pendahuluan</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Materi <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../materi1/">Materi 1 Stack</a>
+</li>
+                                    
+<li >
+    <a href="../materi2/">Materi 2 infix, prefix, postfix</a>
+</li>
+                                    
+<li >
+    <a href="../materi3/">Materi 3 Classes</a>
+</li>
+                                    
+<li >
+    <a href="../materi4/">Materi 4 Linked List</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Materi 5 Rekursif</a>
+</li>
+                                    
+<li >
+    <a href="../materi6/">Materi 6 Searching</a>
+</li>
+                                    
+<li >
+    <a href="../materi7/">Materi 7 Hashing</a>
+</li>
+                                    
+<li >
+    <a href="../materi8/">Materi 8 Tree</a>
+</li>
+                                    
+<li >
+    <a href="../materi9/">Materi 9 Graph</a>
+</li>
+                                </ul>
+                            </li>
+                            <li >
+                                <a href="../Profil/">Profil</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../materi4/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../materi6/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#rekursif">Rekursif</a></li>
+            <li><a href="#adefinisi">A.Definisi</a></li>
+            <li><a href="#iteratif">Iteratif</a></li>
+            <li><a href="#b-code">B. Code</a></li>
+            <li><a href="#visualisasi-rekursif">Visualisasi Rekursif</a></li>
+            <li><a href="#fractal">Fractal</a></li>
+            <li><a href="#latihan-praktikum">Latihan Praktikum</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="rekursif">Rekursif</h1>
+<h3 id="adefinisi">A.Definisi</h3>
+<p>Fungsi rekursif dalam pemrograman merupakan fungsi yang memanggil dirinya sendiri. Fungsi rekursif sering saya bayangkan seperti perulangan. Karena tingkah lakunya yang mengulang-ulang setiap pemanggilan dirinya.</p>
+<h3 id="iteratif">Iteratif</h3>
+<p>Iteratif merupakan penyelesaian permasalahan dengan perulangan, menggunakan syntax <code>for</code> atau <code>while</code> (pada Python). </p>
+<p>Contoh :</p>
+<p>Berikut adalah code untuk perhitungan faktorial suatu bilangan dengan menggunakan cara iteratif. 
+Pada code ini, terdapat iterasi while, yang menghitung perkalian, mulai dari n<em>n</em>, sampai dengan 2.</p>
+<pre><code class="python">#Cara Iteratif
+def factorialIteratif(bilangan):
+    if bilangan &lt;=1:
+        return(1)
+    else:
+        temp=bilangan
+        hasil=1
+        while temp&gt;1:
+            hasil=hasil*temp
+            temp=temp-1
+        return(hasil)
+ print(factorialIteratif(4))
+</code></pre>
+
+<p>Rekursif merupakan suatu teknik pemrograman yang memecah permasalahan menjadi permasalahan dengan ukuran yang lebih kecil dan lebih kecil lagi, sehingga permasalahan dengan ukuran kecil tersebut dapat dengan mudah dipecahkan. Teknik ini dapat dilakukan dengan cara memanggil fungsi itu sendiri seperti definisi diatas. </p>
+<pre><code class="python">#Cara Rekursif
+def factorialRekursif(bilangan):
+    if bilangan &lt;=1:
+        return(1)
+    else:
+        return(bilangan * factorialRekursif(bilangan-1))
+data=factorialRekursif(4)
+print(data)      
+</code></pre>
+
+<p>Dari Fungsi tersubut terlihat beberapa perbedaan, dapat disimak bahwa teknik rekursif ini melibatkan pemaggilan fungsinya sendiri, dengan parameter yang berukuran lebih kecil. adapun aturan dalam teknik rekursif :</p>
+<ul>
+<li>Fungsi rekursif harus memiliki <em>base case</em>, <em>base case</em> inilah yang berfungsi untuk menghentikan pemanggilan terus menerus fungsi rekursif</li>
+<li>fungsi rekursif harus memiliki sintaks yang dapat merubah state dari permasalahan, sehingga semakin lama solusi permasalahan menuju <em>base case</em> yang sudah dibuat</li>
+<li>Fungsi rekursif harus memanggil dirinya sendiri</li>
+</ul>
+<h3 id="b-code">B. Code</h3>
+<p>Contoh :</p>
+<p>Berikut fungsi rekursif untuk konversi bilangan desimal menjadi bilangan base yang lain.</p>
+<pre><code class="python">def konversiDesimal(bilangan,base):
+    charBilangan='0123456789ABCDEF'
+    if bilangan&lt;base:
+        return(charBilangan[bilangan])
+    else:
+        temp=bilangan//base
+        ind=bilangan % base
+        print(type(temp),temp,type(ind),ind)
+        return(konversiDesimal(temp,base)+charBilangan[ind])
+ konversiDesimal(5,2)
+</code></pre>
+
+<h3 id="visualisasi-rekursif">Visualisasi Rekursif</h3>
+<h3 id="fractal">Fractal</h3>
+<p>Fractal merupakan cabang matematika dan memiliki banyak kesamaan dengan teknik rekursif. Fraktal memiliki bentuk dasar, dan bentuk dasar ini dikembangkan secara berulang terus menerus.</p>
+<p>Contoh :</p>
+<pre><code class="python">import turtle
+def draw_triangle(points, color, my_turtle):   
+    my_turtle.speed('slowest')
+    my_turtle.fillcolor(color)
+    my_turtle.up()
+    my_turtle.goto(points[0][0],points[0][1])
+    my_turtle.down()
+    my_turtle.begin_fill()
+    my_turtle.goto(points[1][0], points[1][1])
+    my_turtle.goto(points[2][0], points[2][1])
+    my_turtle.goto(points[0][0], points[0][1])
+    my_turtle.end_fill()
+def get_mid(p1, p2):
+    return ((p1[0] + p2[0]) / 2, (p1[1] + p2[1]) / 2)
+def sierpinski(points, degree, my_turtle):
+    color_map = [&quot;blue&quot;, &quot;red&quot; , &quot;green&quot;, &quot;white&quot; , &quot;yellow&quot; ,&quot;violet&quot; , &quot;orange&quot;]
+    draw_triangle(points, color_map[degree], my_turtle)
+    if degree &gt; 0:
+        sierpinski([points[0],get_mid(points[0], points[1]), get_mid(points[0], points[2])], degree-1, my_turtle)
+        sierpinski([points[1],get_mid(points[0], points[1]), get_mid(points[1], points[2])], degree-1, my_turtle)
+        sierpinski([points[2],get_mid(points[2], points[1]), get_mid(points[0], points[2])], degree-1, my_turtle)
+
+def main():
+    my_turtle = turtle.Turtle()
+    my_win = turtle.Screen()
+    my_points = [[-100, -50], [0, 100], [100, -50]]
+    sierpinski(my_points, 2, my_turtle)
+    my_win.exitonclick()
+
+main()
+</code></pre>
+
+<h3 id="latihan-praktikum">Latihan Praktikum</h3>
+<p>1.</p>
+<pre><code class="python">import turtle
+my_turtle = turtle.Turtle()
+my_win = turtle.Screen()
+
+def draw_square(my_turtle, line_len,a,banyak_level,b):
+    if b&lt;banyak_level+1:
+        if a&lt;4:
+            if line_len &gt; 0:
+                my_turtle.forward(line_len/2)
+                my_turtle.right(90)
+                my_turtle.forward(line_len)
+                my_turtle.right(90)
+                my_turtle.forward(line_len/2)
+                my_turtle.right(90)
+                draw_square(my_turtle, line_len,a+1,banyak_level,b)
+        else:
+            draw_square(my_turtle, line_len/2,0,banyak_level,b+1)
+
+draw_square(my_turtle, 200,0,6,0)
+my_win.exitonclick()
+
+</code></pre>
+
+<p><img alt="" src="C:\Users\Choirul\AppData\Local\Programs\Python\Python37-32\Scripts\struktur_data\docs\assets\images\Untitled.png" /></p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2019 Ach Choirul Umam, 160411100075</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

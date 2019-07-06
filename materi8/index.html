@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Choirul Umam 160411100075">
+        <link rel="canonical" href="https://squidfunk.github.io/mkdocs-material/materi8/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Materi 8 Tree - Materi Struktur Data</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">Materi Struktur Data</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Pendahuluan</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Materi <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../materi1/">Materi 1 Stack</a>
+</li>
+                                    
+<li >
+    <a href="../materi2/">Materi 2 infix, prefix, postfix</a>
+</li>
+                                    
+<li >
+    <a href="../materi3/">Materi 3 Classes</a>
+</li>
+                                    
+<li >
+    <a href="../materi4/">Materi 4 Linked List</a>
+</li>
+                                    
+<li >
+    <a href="../materi5/">Materi 5 Rekursif</a>
+</li>
+                                    
+<li >
+    <a href="../materi6/">Materi 6 Searching</a>
+</li>
+                                    
+<li >
+    <a href="../materi7/">Materi 7 Hashing</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Materi 8 Tree</a>
+</li>
+                                    
+<li >
+    <a href="../materi9/">Materi 9 Graph</a>
+</li>
+                                </ul>
+                            </li>
+                            <li >
+                                <a href="../Profil/">Profil</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../materi7/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../materi9/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#tree">Tree</a></li>
+            <li><a href="#1-binary-tree">1. Binary Tree</a></li>
+            <li><a href="#2parsing-binary-tree">2.Parsing Binary Tree</a></li>
+            <li><a href="#pembuatan-parse-tree">Pembuatan Parse Tree</a></li>
+            <li><a href="#latihan-praktikum">Latihan Praktikum</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="tree">Tree</h1>
+<p>Pada materi sebelumnya kita telah belajar mengenai menyimpanan data secara linear, seperti hasing, stack, queue dan linked list. Pada mater kali ini kita akan mempelajari Tree yang memiliki cara penyimpanan data non-linear melainkan secara hierarki. Bagaimana maksudnya? Untuk mempermudahnya kita bayangkan saja susunan keluarga yang kita miliki. Jika diperhatikan dalam susunan tersebut kita akan menemukan siapa kakek kita, orang tua kita, saudara orang tua atau paman kita, sepepupu kita, saudara kita, atau bahkan cucu kita bukan? Begitulah kira - kira penggambarannya dari pengertian Tree penyimpanan data secara hierarki yang tersusun secara urut dari kakek hingga cucu. Berikut atribut - atribut yang terdapat dalam Tree :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Node</strong>,</th>
+<th>merupakan bagian dari tree yang menyimpan informasi atau juga disebut sebagai <em>key</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Edge</strong></td>
+<td>yang menghubungkan antara node yang satu dengan yang lain. Hanya ada satu edge yang masuk ke dalam node, dan satu atau lebih edge yang keluar dari suatu node</td>
+</tr>
+<tr>
+<td><strong>Root</strong></td>
+<td>node yang terletak di paling atas, tidak ada edge yang masuk ke dalam node root ini, tapi root mempunyai satu atau lebih dari satu edge yang keluar.</td>
+</tr>
+<tr>
+<td><strong>path</strong></td>
+<td>merupakan urutan node dari root sampai tujuan, misalkan computer --&gt; D: --&gt; Mata Kuliah --&gt; Struktur Data</td>
+</tr>
+<tr>
+<td><strong>children</strong>,</td>
+<td>merupakan node-node yang memiliki edge yang masuk dari node yang sama. Misalkan program files, users, dan windows merupakan children, krn memiliki edge masuk yang sama-sama berasal dari node C:</td>
+</tr>
+<tr>
+<td><strong>Parent</strong></td>
+<td>node yang memiliki edge yang keluar dari node tersebut, misalkan node C: adalah parent dari program files, users, dan windows</td>
+</tr>
+<tr>
+<td><strong>Siblings</strong></td>
+<td>adalah node-node yang berasal dari parent yang sama</td>
+</tr>
+<tr>
+<td><strong>subtree</strong></td>
+<td>kumpulan dari node dan edge yang terdiri dari parent dan semua node setelah parent</td>
+</tr>
+<tr>
+<td><strong>leaf node</strong>,</td>
+<td>node yang tidak memiliki edge yang keluar, node yang tidak memiliki children</td>
+</tr>
+<tr>
+<td><strong>level</strong>,</td>
+<td>tingkatan dari node. Root merupakan level ke-0, semakin kebawah maka level dari node tersebut semakin besar, misalkan struktur data berada di level ke-3</td>
+</tr>
+<tr>
+<td><strong>height</strong></td>
+<td>merupakan tinggi tree, nilai dari height ini adalah level maksimum dari tree</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-binary-tree">1. Binary Tree</h3>
+<p><img alt="" src="C:\Users\Choirul\AppData\Local\Programs\Python\Python37-32\Scripts\struktur_data\docs\assets\images\maxresdefault.jpg" /></p>
+<p><strong>Binary tree</strong> merupakan <em>tree</em> dimana setiap <em>parent</em> hanya memiliki dua buah atau satu <em>node children</em> saja.</p>
+<pre><code class="python">class BinaryTree:
+    def __init__(self, root):
+        self.key = root
+        self.leftChild = None
+        self.rightChild = None
+myTree=BinaryTree(10)
+print(myTree.leftChild)
+</code></pre>
+
+<p>Contoh :</p>
+<pre><code class="python">class BinaryTree:
+    def __init__(self, root):
+        self.key = root
+        self.leftChild = None
+        self.rightChild = None
+    def insertLeft(self, new_node):
+        if self.leftChild == None:
+            self.leftChild = BinaryTree(new_node)
+        else:
+            t = BinaryTree(new_node)
+            t.leftChild = self.leftChild
+            self.leftChild = t
+    def insertRight(self, new_node):
+        if self.rightChild == None:
+            self.rightChild = BinaryTree(new_node)            
+        else:
+            t = BinaryTree(new_node)
+            t.rightChild = self.rightChild
+            self.rightChild = t
+</code></pre>
+
+<p>Di mehod insertLeft perlu dilakukan pengecekan terlebih dahulu, apakah child kiri dari node yang akan disisipi subtree baru masih kosong, jika iya maka subtree tersebut dimasukkan pada leftChild. Dapat Menggunakan Perintah:</p>
+<pre><code class="python">self.leftChild=BinaryTree(new_node)
+</code></pre>
+
+<p>Namun, jika setelah dilakukan pengecekan pada binary tree, ternyata leftChild tersebut tidak kosong, Misalkan terdapat tree 'u', dimana tree 'u' tersebut, memiliki leftchild, yaitu 'm'. Jika ingin dilakukan penyisipan tree baru, yaitu 't', maka tahapan yang harus dilakukan adalah :</p>
+<pre><code class="python">1. t.leftChild = self.leftChild
+2. self.leftChild = t
+</code></pre>
+
+<p>Contoh :</p>
+<p>Berikut tambahan method pada class BinaryTree, untuk mendapatkan informasi mengenai left child, right child, dan root dari suatu binary tree</p>
+<pre><code class="python">class BinaryTree:
+    def __init__(self, root):
+        self.key = root
+        self.leftChild = None
+        self.rightChild = None
+    def insertLeft(self, new_node):
+        if self.leftChild == None:           
+            self.leftChild = BinaryTree(new_node)         
+        else:
+            t = BinaryTree(new_node)
+            t.leftChild = self.leftChild
+            self.leftChild = t
+
+    def insertRight(self, new_node):
+        if self.rightChild == None:
+            self.rightChild = BinaryTree(new_node)            
+        else:
+            t = BinaryTree(new_node)
+            t.rightChild = self.rightChild
+            self.rightChild = t
+
+    def getRightChild(self):
+        return self.rightChild
+    def getLeftChild(self):
+        return self.leftChild
+    def setRootVal(self, obj):
+        self.key = obj
+    def getRootVal(self):
+        return self.key
+
+</code></pre>
+
+<h3 id="2parsing-binary-tree">2.Parsing Binary Tree</h3>
+<p><img alt="" src="C:\Users\Choirul\AppData\Local\Programs\Python\Python37-32\Scripts\struktur_data\docs\assets\images\meParse.png" /></p>
+<p>Binary Tree Juga Dapat Digunakan Untuk Penyelesaina Persamaan matematika, penyelesaian persamaan matematika tergantung, pada operator dan keberadaan kurung, Jika terdapat tanda kurung buka maupun tutup, maka persamaan di dalam kurung tersebut haruslah diselesaikan pertama kali walapun level operator precedence lebih rendah dibandingkan operator yang berada di luar kurung</p>
+<p>Ada 2 Tahap Untuk penyelesaian persamaan matematika :</p>
+<ol>
+<li>Pembentukan Parse Tree</li>
+<li>Evaluasi Persamaan Matematika</li>
+</ol>
+<h3 id="pembuatan-parse-tree">Pembuatan Parse Tree</h3>
+<p>Persamaan Matematika harus dipecah menjadi list token agar dapat dibuat menjadi parse tree.</p>
+<ul>
+<li>Kurung buka, kurung buka ini menandakan ekspressi baru yang akan dioperasi, oleh karena itu perlu dibuat subtree baru untuk menyelesaikan ekspressi baru ini</li>
+<li>kurung tutup, kurung tutup ini menandakan akhir dari ekspressi matematika</li>
+<li>operand, operand ini yang akan jadi <em>leaf node</em> dan <em>children</em> dari operator</li>
+<li>operator, operator merupakan <em>parent</em> dan punya <em>left</em> maupun <em>right child</em></li>
+</ul>
+<p>Algoritma : </p>
+<ol>
+<li>Jika <em>current token</em> adalah kurung buka, '(' , tambahkan node baru sebagai <em>left child</em> dari <em>current Node</em> dan jadikan node baru ini sebagai <em>current node</em></li>
+<li>jika <em>current token</em> adalah operator, set nilai key dari <em>current node</em>dengan operator tersebut. Tambahkan node baru sebagai right child dari current node, jadikan right child ini sebagai <em>current node</em></li>
+<li>jika <em>current token</em> adalah operand, maka set nilai key dari <em>current node</em> dengan operand tersebut dan jadikan parent dari node tersebut menjadi <em>current node</em></li>
+<li>jika <em>current token</em> adalah kurung tutup, ')', maka kembali ke parent dari current node</li>
+</ol>
+<p>Contoh :</p>
+<p>Berikut code untuk parsing atau pembuatan binary tree untuk persamaan matematika.</p>
+<pre><code class="python">def stack():
+    s=[]
+    return (s)
+
+def push(s,data):
+    s.append(data)
+
+def pop(s):
+    data=s.pop()
+    return(data)
+
+def peek(s):
+    return(s[len(s)-1])
+
+def isEmpty(s):
+    return (s==[])
+
+def size(s):
+    return(len(s))
+
+class BinaryTree:
+    def __init__(self, root):
+        self.key = root
+        self.leftChild = None
+        self.rightChild = None
+    def insertLeft(self, new_node):
+        if self.leftChild == None:           
+            self.leftChild = BinaryTree(new_node)         
+        else:
+            t = BinaryTree(new_node)
+            t.leftChild = self.leftChild
+            self.leftChild = t
+
+    def insertRight(self, new_node):
+        if self.rightChild == None:
+            self.rightChild = BinaryTree(new_node)            
+        else:
+            t = BinaryTree(new_node)
+            t.rightChild = self.rightChild
+            self.rightChild = t
+
+    def getRightChild(self):
+        return self.rightChild
+    def getLeftChild(self):
+        return self.leftChild
+    def setRootVal(self, obj):
+        self.key = obj
+    def getRootVal(self):
+        return self.key
+
+    def buildParseTree(mathExp):
+    tokenList = mathExp.split()
+    parentStack = stack()
+    expTree = BinaryTree(' ' )
+    push(parentStack,expTree)
+    print(tokenList)
+    currentTree = expTree
+    for i in tokenList:
+
+        if i == '(' :
+            print('if 1', i)
+            currentTree.insertLeft(' ' )
+            push(parentStack,currentTree)
+            currentTree = currentTree.getLeftChild()
+        elif i not in [ '+' , '-' , '*' , '/' , ')' ]:
+            print('if 2', i)
+            currentTree.setRootVal(int(i))
+
+            parent = pop(parentStack)
+            currentTree = parent
+        elif i in [ '+' , '-' , '*' , '/' ]:
+            print('if 3', i)
+            currentTree.setRootVal(i)
+            currentTree.insertRight(' ' )
+            push(parentStack,currentTree)
+            currentTree = currentTree.getRightChild()
+        elif i == ')' :
+
+            currentTree = pop(parentStack)
+        else:
+            raise ValueError
+    return expTree
+
+pt = buildParseTree(' ( 3 + ( 4 * 5 ) ) ')
+print(pt.getRootVal())
+tmp=pt.getLeftChild()
+print(tmp.getRootVal())
+if pt.getLeftChild():
+    print('Tree')
+</code></pre>
+
+<h3 id="latihan-praktikum">Latihan Praktikum</h3>
+<pre><code class="python">class BinaryTree:
+    rightChild = None
+    leftChild = None
+    def __init__(self, root):
+        self.key = root
+        self.leftChild = None
+        self.rightChild = None
+    def insertLeft(self, new_node):
+        if self.leftChild == None:           
+            self.leftChild = BinaryTree(new_node)         
+        else:
+            t = BinaryTree(new_node)
+            t.leftChild = self.leftChild
+            self.leftChild = t
+
+    def insertRight(self, new_node):
+        if self.rightChild == None:
+            self.rightChild = BinaryTree(new_node)            
+        else:
+            t = BinaryTree(new_node)
+            t.rightChild = self.rightChild
+            self.rightChild = t
+
+    def getRightChild(self):
+        return self.rightChild
+    def getLeftChild(self):
+        return self.leftChild
+    def setRootVal(self, obj):
+        self.key = obj
+    def getRootVal(self):
+        return self.key
+
+def stack():
+    s=[]
+    return (s)
+def push(s,data):
+    s.append(data)
+def pop(s):
+    data=s.pop()
+    return(data)
+def peek(s):
+    return(s[len(s)-1])
+def isEmpty(s):
+    return (s==[])
+def size(s):
+    return(len(s))
+
+import operator
+def evaluate(parse_tree):
+    opers = { '+' :operator.add, '-' :operator.sub, '*' :operator.mul,'/' :operator.truediv}
+    left = parse_tree.getLeftChild()
+    right = parse_tree.getRightChild()
+    if left and right:
+        fn = opers[parse_tree.key]
+        return fn(evaluate(left),evaluate(right))
+    else:
+        return parse_tree.key
+
+def buildTree(i):
+    s = stack()
+    i = i.split()
+    for x in i:
+        if x in '1234567890':
+            t = BinaryTree(x)
+            push(s, t)
+        elif x in '+-*/':
+            sb = pop(s)
+            sc = pop(s)
+            a = BinaryTree(x)
+            a.insertRight(sb.getRootVal())
+            a.insertLeft(sc.getRootVal())
+            push(s, a)
+
+    return s[0]
+
+a = '2 8 9 + *'
+r = buildTree(a)
+print(evaluate(r))
+
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2019 Ach Choirul Umam, 160411100075</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

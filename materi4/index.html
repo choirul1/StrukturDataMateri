@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Choirul Umam 160411100075">
+        <link rel="canonical" href="https://squidfunk.github.io/mkdocs-material/materi4/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Materi 4 Linked List - Materi Struktur Data</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">Materi Struktur Data</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Pendahuluan</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Materi <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../materi1/">Materi 1 Stack</a>
+</li>
+                                    
+<li >
+    <a href="../materi2/">Materi 2 infix, prefix, postfix</a>
+</li>
+                                    
+<li >
+    <a href="../materi3/">Materi 3 Classes</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Materi 4 Linked List</a>
+</li>
+                                    
+<li >
+    <a href="../materi5/">Materi 5 Rekursif</a>
+</li>
+                                    
+<li >
+    <a href="../materi6/">Materi 6 Searching</a>
+</li>
+                                    
+<li >
+    <a href="../materi7/">Materi 7 Hashing</a>
+</li>
+                                    
+<li >
+    <a href="../materi8/">Materi 8 Tree</a>
+</li>
+                                    
+<li >
+    <a href="../materi9/">Materi 9 Graph</a>
+</li>
+                                </ul>
+                            </li>
+                            <li >
+                                <a href="../Profil/">Profil</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../materi3/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../materi5/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#linked-list">Linked List</a></li>
+            <li><a href="#a-definisi">A. Definisi</a></li>
+            <li><a href="#link-list">Link List</a></li>
+            <li><a href="#penambahan-data-pada-link-list">Penambahan Data Pada Link list</a></li>
+            <li><a href="#transversal-link-list">Transversal Link List</a></li>
+            <li><a href="#pencarian-node-pada-link-list">Pencarian Node pada Link List</a></li>
+            <li><a href="#display-data-pada-link-list">Display data pada link list</a></li>
+            <li><a href="#remove-data-pada-link-list">Remove data pada link list</a></li>
+            <li><a href="#ordered-list">Ordered List</a></li>
+            <li><a href="#latihan-praktikum">Latihan Praktikum</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="linked-list">Linked List</h1>
+<h3 id="a-definisi">A. Definisi</h3>
+<p>Linked List adalah suatu struktur data linier. Berbeda dengan array yang juga merupakan struktur data linier dan tipe data komposit, linked list dibentuk secara dinamik. Pada saat awal program dijalankan elemen linked list belum data. Elemen linked list (disebut node) dibentuk sambil jalan sesuai instruksi. Apabila setiap elemen array dapat diakses secara langsung dengan menggunakan indeks, sebuah node linked list diakses dengan menggunakan pointer yang mengacu (menunjuk) ke node tersebut.</p>
+<h4 id="node">Node</h4>
+<p>Untuk membuat struktur data linked list, terlebih dahulu dibuat <strong>node-node</strong> penyusun linked list tersebut. <strong>Node</strong> ini harus memiliki setidaknya dua informasi, yaitu informasi mengenai data atau nilai, dan informasi mengenai node berikutnya. Oleh karena itu <strong>node</strong> dibuat menjadi sebuah tipe data baru yang bertipe <strong>class</strong>, dengan dua informasi yaitu <em>data</em> dan <em>next</em>.</p>
+<p>Terdapat beberapa method penting pada class <strong>node</strong> ini, antara lain:</p>
+<ul>
+<li><strong>constructor</strong>, yang akan dijalankan setiap instansiasi class</li>
+<li><strong>getData</strong>, untuk mengetahui informasi data yang terdapat pada node tersebut</li>
+<li><strong>getNext</strong>, untuk mengetahui informasi node berikutnya, jika tidak ada node berikutnya maka nilai balik berupa <em>None</em></li>
+<li><strong>setData</strong>, untuk merubah informasi data yang terdapat pada node tersebut</li>
+<li><strong>setNext</strong>, untuk menentukan node berikutnya yang ditunjukan oleh informasi <em>next</em> dari node tersebut</li>
+</ul>
+<p>Contoh :</p>
+<p>Berikut adalah pembuatan class Node yang merupakan representasi dari sebuah node. <em>Property</em> atau <em>state</em> yang terdapat pada class Node ini :</p>
+<ol>
+<li>data : berisi nilai dari node</li>
+<li>next : berisi informasi berikutnya yang ditunjuk oleh node. Proses intansiasi, property next ini diset <code>None</code> yang merupakan representasi Nil atau Ground, berarti tidak ada node yang ditunjuk oleh node ini</li>
+</ol>
+<pre><code class="python">class Node:
+    def __init__(self, init_data):
+        self.data = init_data
+        self.next = None
+    def getData(self):
+        return self.data
+    def getNext(self):
+        return self.next
+    def setData(self, newdata):
+        self.data = newdata
+    def setNext(self, new_next):
+        self.next = new_next
+a=Node(11)
+b=Node(110)
+print(a.getNext())
+print(b.getNext())
+a.setNext(b)
+print(a.getNext())
+</code></pre>
+
+<p>Di dalam Contoh diatas, terdapat obyek a dan obyek b dimana obyek tersebut memiliki tipe data class node. pada saat inisialisasi, kedua obyek bernilai 11 dan 110   , serta property next bernilai <strong>None</strong>. Pada baris ke-17, terdapat perintah <code>a.setNext(b)</code>, yang berarti property <code>next</code> dari obyek <code>a</code> akan menunjuk ke obyek <code>b</code>. Sehingga ketika dilakukan perintah <code>print(a.getNext())</code> akan menunjukkan ke suatu class Node.</p>
+<h3 id="link-list">Link List</h3>
+<p>merupakan kumpulan dari node-node yang terhubung satu sama lain. Untuk mengakses node-node yang terdapat pada linked list.</p>
+<p>Contoh :</p>
+<p>Berikut adalah class untuk linked list, dimana pada class tersebut terdapat pointer yang menunjukkan node pertama dari suatu linked list (<em>head</em>). Terdapat dua buah method utama pada class LinkedList ini, antara lain:</p>
+<ol>
+<li><em>constructor</em>, <code>__init__</code>, yang merupakan method yang dijalankan pada saat pembuatan obyek. Karena obyek baru pertama kali dibuat, maka linked list masih kosong, sehingga pointer <em>head</em> masih bernilai <em>None</em>.</li>
+<li>Method <code>isEmpty</code>, untuk pengecekan apakah linked list memiliki node ataukah tidak. Jika pointer <em>head</em> masih menunjuk pada <em>None</em>, maka linked list masih tidak memiliki node, sehingga return value adalah True.</li>
+</ol>
+<pre><code class="python">class LinkedList:
+    def __init__(self):
+        self.head = None
+    def isEmpty(self):
+        return self.head==None
+ mylist=LinkedList()
+print(mylist.head)
+mylist.isEmpty()
+</code></pre>
+
+<h3 id="penambahan-data-pada-link-list">Penambahan Data Pada Link list</h3>
+<p>Penambahan data baru diletakkan pada awal link list yang terdapat pada pointer head.</p>
+<p>Algoritma :</p>
+<ul>
+<li>
+<p>Tautkan node baru ini ke node awal dari linked list</p>
+</li>
+<li>
+<p>modifikasi head dari linked list agar menunjuk pada node baru</p>
+</li>
+</ul>
+<p><img alt="" src="C:\Users\Choirul\AppData\Local\Programs\Python\Python37-32\Scripts\struktur_data\docs\assets\images\addList1.png" /></p>
+<p>Urutan tahapan ini <strong>tidak boleh dibalik</strong>, karena jika dibalik maka linked list yang awal tidak lagi dapat ditemukan.</p>
+<p>Contoh :</p>
+<p>Penambahan method add() pada link list.</p>
+<pre><code class="python">class LinkedList:
+    def __init__(self):
+        self.head = None
+    def isEmpty(self):
+        return self.head==None
+    def add(self, item):
+        temp = Node(item)
+        temp.setNext(self.head)
+        self.head = temp
+mylist=LinkedList()
+print(mylist.head)
+mylist.isEmpty()
+mylist.add(34)
+print(mylist.head)
+mylist.add(45)
+print(mylist.head)
+print(mylist.head.data)
+mylist.add(21)
+</code></pre>
+
+<pre><code class="python">Setelah dilakukan penambahan node terakhir diatas, output mylist berisi =[21, 45, 34]
+</code></pre>
+
+<h3 id="transversal-link-list">Transversal Link List</h3>
+<p>Cara mengetahui ukuran dari list, diperlukan tahapan <strong>traverse</strong>, yaitu menelusuri setiap node yang terdapat pada linked list.</p>
+<p><img alt="" src="C:\Users\Choirul\AppData\Local\Programs\Python\Python37-32\Scripts\struktur_data\docs\assets\images\pic007.jpg" /></p>
+<p>Pada proses penelusuran atau <em>traversal</em> dibutuhkan pointer bantuan. Pointer bantuan yang ditunjukkan pada Gambar diatas, adalah pointer curent yang bergerak dari node awal sampai dengan node akhir. 
+Proses traversal ini dibutuhkan untuk beberapa hal, seperti untuk menghitung jumlah node yang terdapat pada Linked List, untuk mencari node pada linked list, untuk menampilkan seluruh node dari linked list, untuk menyisipkan node setelah atau sebelum node yang sudah terdapat pada linked list, dan untuk menghapus suatu node.</p>
+<p>Contoh :</p>
+<p>Implementasi yang akan dibuat adalah pembuatan method size(), untuk menghitung jumlah node.</p>
+<p>Algoritma :</p>
+<ol>
+<li>pointer bantuan curent berada pada node yang ditunjuk oleh head (yaitu node pertama)</li>
+<li>pointer curent bergerak, dengan perintah <code>curent=curent.getNext()</code>, sekaligus dilakukan increment variabel count, yang merepresentasikan jumlah node</li>
+<li>pergerakan atau traversal ini akan berakhir ketika pointer curent menunjuk pada None, yang merepresentasikan, tidak ada lagi node yang terdapat pada Linked list</li>
+</ol>
+<pre><code class="python">class LinkedList:
+    def __init__(self):
+        self.head = None
+    def isEmpty(self):
+        return self.head==None
+    def add(self, item):
+        temp = Node(item)
+        temp.setNext(self.head)
+        self.head = temp
+    def size(self):
+        curent = self.head
+        count = 0
+        while curent != None:
+            count = count + 1
+
+            curent = curent.getNext()           
+        return count
+ mylist=LinkedList()
+mylist.add(45)
+mylist.add(34)
+mylist.add(70)
+print(mylist.size())
+</code></pre>
+
+<h3 id="pencarian-node-pada-link-list">Pencarian Node pada Link List</h3>
+<p>Untuk pencarian node di dalam linked list juga perlu dilakukan <em>traverse</em>linked list seperti sebelumnya, hanya saja setiap berada pada suatu node, maka dilakukan pencocokan apakah node tersebut adalah node yang dicari</p>
+<p>Contoh :</p>
+<p>penambahan method <code>search()</code> pada class LinkedList. Method <code>search()</code> ini hampir sama dengan method <code>size</code>, hanya saja jika ditambahkan apakah node yang ditunjukkan oleh pointer curent adalah node yang dicari, dengan perintah:</p>
+<pre><code class="python">if curent.getData() == item: #dimana item adalah node yang dicari
+</code></pre>
+
+<pre><code class="python">class LinkedList:
+    def __init__(self):
+        self.head = None
+    def isEmpty(self):
+        return self.head==None
+    def add(self, item):
+        temp = Node(item)
+        temp.setNext(self.head)
+        self.head = temp
+    def size(self):
+        curent = self.head
+        count = 0
+        while curent != None:
+            count = count + 1
+            curent = curent.getNext()
+        return count
+    def search(self,item):
+        curent = self.head
+        found = False
+        while curent != None and not found:
+            if curent.getData() == item:
+                found = True
+            else:
+                curent = curent.getNext()
+        return found
+ mylist=LinkedList()
+ mylist.add(45)
+ mylist.add(34)
+ mylist.add(70)
+ mylist.add(84)
+ mylist.size()
+ mylist.search(34)
+</code></pre>
+
+<h3 id="display-data-pada-link-list">Display data pada link list</h3>
+<p>Proses traversal juga dapat digunakan untuk menampilkan data pada seluruh node yang terdapat pada Linked List.</p>
+<p>Contoh :</p>
+<p>Berikut method <code>display()</code> untuk menampilkan data dari seluruh node pada linked list.</p>
+<pre><code class="python">class LinkedList:
+    def __init__(self):
+        self.head = None
+    def isEmpty(self):
+        return self.head==None
+    def add(self, item):
+        temp = Node(item)
+        temp.setNext(self.head)
+        self.head = temp
+    def size(self):
+        curent = self.head
+        count = 0
+        while curent != None:
+            count = count + 1
+            curent = curent.getNext()
+        return count
+    def search(self,item):
+        curent = self.head
+        found = False
+        while curent != None and not found:
+            if curent.getData() == item:
+                found = True
+            else:
+                curent = curent.getNext()
+        return found
+    def display(self):
+        curent = self.head
+        while curent != None:
+            print(curent.getData())
+            curent = curent.getNext()
+mylist=LinkedList()
+mylist.add(45)
+mylist.add(34)
+mylist.add(70)
+mylist.add(84)
+mylist.display()
+</code></pre>
+
+<h3 id="remove-data-pada-link-list">Remove data pada link list</h3>
+<p>Jika data yang dihapus berada di node awal dari linked list (yang ditunjukkan dengan nilai previous masih <em>None</em>, maka yang dilakukan pointer <em>head</em> langsung menunjuk pada node setelah node yang akan dihapus tersebut,</p>
+<p>Contoh :</p>
+<p>Berikut adalah penambahan method <code>remove()</code> untuk menghapus node yang diinginkan pada linked list.</p>
+<pre><code class="python">class LinkedList:
+    def __init__(self):
+        self.head = None
+    def isEmpty(self):
+        return self.head==None
+    def add(self, item):
+        temp = Node(item)
+        temp.setNext(self.head)
+        self.head = temp
+    def size(self):
+        curent = self.head
+        count = 0
+        while curent != None:
+            count = count + 1
+            curent = curent.getNext()
+        return count
+    def search(self,item):
+        curent = self.head
+        found = False
+        while curent != None and not found:
+            if curent.getData() == item:
+                found = True
+            else:
+                curent = curent.getNext()
+        return found
+    def display(self):
+        curent = self.head
+        while curent != None:
+            print(curent.getData())
+            curent = curent.getNext()
+    def remove(self, item):
+        curent = self.head
+        previous = None
+        found = False
+        while not found:
+            if curent.getData() == item:
+                found = True
+            else:
+                previous = curent
+                curent = curent.getNext()
+        if previous == None:
+            self.head = curent.getNext()
+        else:
+            previous.setNext(curent.getNext())
+mylist=LinkedList()
+mylist.add(1)
+mylist.add(3)
+mylist.add(9)
+mylist.add(12)
+mylist.add(23)
+mylist.display()
+mylist.remove(3)
+mylist.display()
+</code></pre>
+
+<h3 id="ordered-list">Ordered List</h3>
+<p>Proses pencarian pada linked list sebelumnya dilakukan dengan cara mencari node satu persatu sampai node terakhir. Proses pencarian ini akan menjadi lebih cepat jika data sudah dalam keadaan terurut, sehingga pencarian dapat dihentikan ketika ditemukan node dengan data lebih rendah atau lebih tinggi. Class Ordered List akan memudahkan pencarian suatu node, karena data yang terdapat pada class ini sudah dalam keadaan terurut.</p>
+<p>Method yang terdapat pada ordered list, sama halnya dengan class linkedlist, hanya saja terdapat perbedaan pada method untuk <strong>add data</strong>(karena node yang terbentuk harus dalam keadaan terurut), dan method search data.</p>
+<p>Contoh :</p>
+<p>Berikut method untuk class ordered list :</p>
+<pre><code class="python">class OrderedLinkedList:
+    def __init__(self):
+        self.head = None
+    def isEmpty(self):
+        return self.head==None
+
+    def size(self):
+        curent = self.head
+        count = 0
+        while curent != None:
+            count = count + 1
+            curent = curent.getNext()
+        return count
+
+    def display(self):
+        curent = self.head
+        while curent != None:
+            print(curent.getData())
+            curent = curent.getNext()
+    def remove(self, item):
+        curent = self.head
+        previous = None
+        found = False
+        while not found:
+            if curent.getData() == item:
+                found = True
+            else:
+                previous = curent
+                curent = curent.getNext()
+        if previous == None:
+            self.head = curent.getNext()
+        else:
+            previous.setNext(curent.getNext())       
+    def search(self,item):
+        curent = self.head
+        found = False
+        stop=False
+        while curent != None and not found and not stop:
+            if curent.getData() == item:
+                found = True
+            else:
+                if curent.getData() &gt; item:
+                    stop = True
+                else:
+                    curent = curent.getNext()
+        return found
+    def add(self, item):
+        curent=self.head
+        previous = None
+        stop = False
+        while curent != None and not stop:
+            if curent.getData() &gt; item:
+                stop = True
+            else:
+                previous = curent
+                curent = curent.getNext()
+
+        temp = Node(item)
+        if previous == None:
+            temp.setNext(self.head)
+            self.head = temp
+        else: # ditautkan antara previous dengan curent
+            temp.setNext(curent)
+            previous.setNext(temp)
+myList=OrderedLinkedList()
+myList.add(9)
+myList.add(14)
+myList.display()
+myList.add(100)
+myList.display()
+</code></pre>
+
+<h3 id="latihan-praktikum">Latihan Praktikum</h3>
+<p>1.</p>
+<pre><code class="python">#Ach. Choirul Umam
+#160411100075
+class Node:
+    def __init__(self, init_data):
+        self.data = init_data
+        self.next = None
+    def getData(self):
+        return self.data
+    def getNext(self):
+        return self.next
+    def setData(self, newdata):
+        self.data = newdata
+    def setNext(self, new_next):
+        self.next = new_next
+class LinkedList:
+    def __init__(self):
+        self.head=None
+    def isEmpty(self):
+        return self.head==None
+    def size(self):
+        current = self.head
+        count = 0
+        while current != None:
+            count+=1
+            current=current.getNext()
+        return count
+    def addRear(self,item):
+        temp=Node(item)
+        if self.isEmpty()==True:
+            self.head=temp
+        else:
+            current=self.head
+            previous=None
+            while current != None:
+                previous=current
+                current=current.getNext()
+            previous.setNext(temp)
+    def __str__(self):
+        data=&quot;[&quot;
+        current=self.head
+        while current!=None:
+            data+=str(current.data)
+            current=current.getNext()
+            if current!=None:
+                data+=&quot;,&quot;
+        data+=&quot;]&quot;
+        return(data)
+    def insertPrevious(self,obj,item):
+        temp=Node(item)
+        current=self.head
+        previous=None
+        stop=False
+        while current!=None and not stop:
+            if current.getData()==obj:
+                stop=True
+            else:
+                previous=current
+                current=current.getNext()
+        if stop==True:
+            temp.setNext(current)
+            previous.setNext(temp)
+    def insertNext(self,obj,item):
+        temp=Node(item)
+        current=self.head
+        previous=current
+        stop=False
+        while current!=None and not stop:
+            if previous.getData()==obj:
+                stop=True
+            else:
+                previous=current
+                current=current.getNext()
+        if stop==True:
+            temp.setNext(current)
+            previous.setNext(temp)
+myList1=LinkedList()
+myList1.addRear(5)
+myList1.addRear(84)
+myList1.addRear(12)
+myList1.addRear(77)
+print (myList1)
+myList1.insertPrevious(84,100)
+print(myList1)
+myList1.insertNext(12,122)
+print(myList1)
+
+class Sorting:
+    def __init__(self,a):
+        self.Data=a
+    def bubbleSort(self,pilihan):
+        t1=time.time()/10000000000
+        #print('Data yang akan diurutkan : ', self.Data)
+        if pilihan==&quot;a&quot;:
+            for outIter in range(len(self.Data)-1,-1,-1):
+                for i in range(outIter):
+                    if self.Data[i]&gt;self.Data[i+1]:
+                        self.Data[i],self.Data[i+1]=self.Data[i+1],self.Data[i]
+        elif pilihan==&quot;d&quot;:
+            for outIter in range(len(self.Data)-1,-1,-1):
+                for i in range(outIter):
+                    if self.Data[i]&lt;self.Data[i+1]:
+                        self.Data[i],self.Data[i+1]=self.Data[i+1],self.Data[i]
+        return t1
+    def selectionSort(self,pilihan):
+        t1=time.time()/10000000000
+        for outIter in range(len(self.Data)-1):       
+            minIndex=outIter
+            if pilihan==&quot;a&quot;:
+                for i in range(outIter+1,len(self.Data)):
+                    if self.Data[i]&lt;self.Data[minIndex]:
+                        minIndex=i
+                self.Data[outIter],self.Data[minIndex]=self.Data[minIndex],self.Data[outIter]
+            if pilihan==&quot;d&quot;:
+                for i in range(outIter+1,len(self.Data)):
+                    if self.Data[i]&gt;self.Data[minIndex]:
+                        minIndex=i
+                self.Data[outIter],self.Data[minIndex]=self.Data[minIndex],self.Data[outIter]
+        return t1
+    def insertionSort(self,pilihan):
+        t1=time.time()/10000000000
+        for outIter in range(1,len(self.Data)):
+            key=self.Data[outIter]
+            ind=outIter
+            if pilihan==&quot;a&quot;:
+                while (ind&gt;0 and self.Data[ind-1]&gt;key):
+                    self.Data[ind]=self.Data[ind-1]
+                    ind=ind-1
+                self.Data[ind]=key
+            if pilihan==&quot;d&quot;:
+                while (ind&gt;0 and self.Data[ind-1]&lt;key):
+                    self.Data[ind]=self.Data[ind-1]
+                    ind=ind-1
+                self.Data[ind]=key
+        return t1
+import time
+t1=time.time()
+import random
+a=randm.sample(range(0, 1000),500)
+dataSort=Sorting(a)
+t1=dataSort.bubbleSort(&quot;a&quot;)
+print(dataSort.Data)
+print('waktu komputasi',t1,'detik')
+
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2019 Ach Choirul Umam, 160411100075</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
